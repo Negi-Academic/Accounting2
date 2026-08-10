@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Accounting Principles - Case Based MCQ Test</title>
+
+<style>
+
+/* =========================================================
+   GENERAL DESIGN
+========================================================= */
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:linear-gradient(135deg,#eef5ff,#fff8ef);
+    color:#263746;
+    font-family:"Cambria","Times New Roman",serif;
+    line-height:1.6;
+}
+
+.container{
+    max-width:1000px;
+    margin:30px auto;
+    padding:0 18px 40px;
+}
+
+.paper{
+    background:#fffdf8;
+    border:1px solid #d6dee8;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 12px 35px rgba(30,55,80,0.14);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+    background:linear-gradient(135deg,#172f50,#2878c8);
+    color:white;
+    text-align:center;
+    padding:32px 25px 26px;
+}
+
+.header .course{
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    color:#e6f2ff;
+}
+
+.header h1{
+    margin:8px 0;
+    font-size:31px;
+    font-weight:700;
+}
+
+.header .subtitle{
+    font-size:18px;
+    color:#eaf4ff;
+}
+
+.math-line{
+    width:75%;
+    height:2px;
+    background:white;
+    opacity:.75;
+    margin:16px auto 0;
+}
+
+
+/* =========================================================
+   TEST INFORMATION
+========================================================= */
+
+.test-info{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    padding:20px 25px;
+    background:#f3f7fc;
+    border-bottom:1px solid #d9e2ec;
+}
+
+.info-box{
+    text-align:center;
+    background:white;
+    padding:11px;
+    border:1px solid #dbe5ef;
+    border-radius:10px;
+    color:#17365d;
+    font-weight:bold;
+}
+
+.info-box strong{
+    color:#2878c8;
+    font-size:18px;
+}
+
+
+/* =========================================================
+   INSTRUCTIONS
+========================================================= */
+
+.instructions{
+    margin:24px 25px;
+    padding:18px 22px;
+    background:#fff5e6;
+    border-left:5px solid #e67e22;
+    border-radius:9px;
+}
+
+.instructions h2{
+    margin:0 0 7px;
+    color:#b35b00;
+    font-size:21px;
+}
+
+.instructions ul{
+    margin:5px 0 0 20px;
+}
+
+
+/* =========================================================
+   QUESTION
+========================================================= */
+
+.questions{
+    padding:0 25px 20px;
+}
+
+.question{
+    background:#ffffff;
+    margin:20px 0;
+    padding:20px;
+    border:1px solid #d8e1eb;
+    border-radius:13px;
+    page-break-inside:avoid;
+}
+
+
+/* Different colours */
+
+.question:nth-child(5n+1){
+    border-left:6px solid #2878c8;
+}
+
+.question:nth-child(5n+2){
+    border-left:6px solid #6f42c1;
+}
+
+.question:nth-child(5n+3){
+    border-left:6px solid #198754;
+}
+
+.question:nth-child(5n+4){
+    border-left:6px solid #e67e22;
+}
+
+.question:nth-child(5n){
+    border-left:6px solid #d35400;
+}
+
+
+/* =========================================================
+   CASE BOX
+========================================================= */
+
+.case-box{
+    background:#f7f9fc;
+    border:1px solid #dce5ef;
+    border-radius:9px;
+    padding:13px 16px;
+    margin-bottom:14px;
+    font-size:15.5px;
+    text-align:justify;
+}
+
+.case-title{
+    color:#6f42c1;
+    font-weight:bold;
+    font-size:16px;
+    margin-bottom:5px;
+}
+
+
+/* =========================================================
+   QUESTION TEXT
+========================================================= */
+
+.question-text{
+    font-size:17px;
+    font-weight:bold;
+    text-align:justify;
+    margin-bottom:12px;
+}
+
+.number{
+    color:#c0392b;
+    font-weight:800;
+    margin-right:6px;
+}
+
+.marks{
+    float:right;
+    background:#edf2f7;
+    color:#566573;
+    font-size:13px;
+    padding:3px 9px;
+    border-radius:20px;
+}
+
+
+/* =========================================================
+   OPTIONS
+========================================================= */
+
+.option{
+    display:block;
+    padding:9px 11px;
+    margin:7px 0;
+    border-radius:8px;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:.15s;
+}
+
+.option:hover{
+    background:#f2f7fc;
+    border-color:#c8d9eb;
+}
+
+.option input{
+    margin-right:9px;
+    transform:scale(1.12);
+    accent-color:#2878c8;
+}
+
+.letter{
+    color:#6f42c1;
+    font-weight:bold;
+}
+
+
+/* =========================================================
+   SUBMIT AREA
+========================================================= */
+
+.submit-area{
+    text-align:center;
+    padding:30px 25px;
+    background:#f4f8fc;
+    border-top:1px solid #d9e2ec;
+}
+
+.submit-btn{
+    background:linear-gradient(135deg,#17365d,#2878c8);
+    color:white;
+    border:none;
+    padding:14px 40px;
+    border-radius:30px;
+    font-size:18px;
+    font-family:inherit;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(40,120,200,.25);
+}
+
+.submit-btn:hover{
+    transform:translateY(-1px);
+}
+
+.submit-btn:disabled{
+    opacity:.55;
+    cursor:not-allowed;
+}
+
+
+/* =========================================================
+   RESULT
+========================================================= */
+
+#result{
+    display:none;
+    max-width:650px;
+    margin:24px auto 0;
+    padding:24px;
+    background:white;
+    border:2px solid #2878c8;
+    border-radius:14px;
+}
+
+.score{
+    font-size:32px;
+    color:#198754;
+    font-weight:800;
+}
+
+.percentage{
+    font-size:21px;
+    color:#17365d;
+    font-weight:bold;
+    margin-top:5px;
+}
+
+.result-details{
+    margin-top:12px;
+    font-size:16px;
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   ANSWER COLOURS
+========================================================= */
+
+.correct{
+    background:#e9f8ef !important;
+    border-color:#9bd7b3 !important;
+}
+
+.wrong{
+    background:#fff0ef !important;
+    border-color:#e7aaa5 !important;
+}
+
+.unanswered{
+    background:#fff8e7 !important;
+    border-color:#efcf87 !important;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    text-align:center;
+    padding:17px;
+    color:#687684;
+    font-size:13px;
+    background:#fbfcfe;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+    .test-info{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .header h1{
+        font-size:24px;
+    }
+
+    .header .subtitle{
+        font-size:16px;
+    }
+
+    .questions{
+        padding:0 14px 15px;
+    }
+
+    .instructions{
+        margin:18px 14px;
+    }
+
+    .question{
+        padding:15px;
+    }
+
+    .marks{
+        float:none;
+        display:inline-block;
+        margin-left:7px;
+    }
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print{
+
+    body{
+        background:white;
+    }
+
+    .paper{
+        box-shadow:none;
+        border:none;
+    }
+
+    .submit-area{
+        display:none;
+    }
+
+    .question{
+        break-inside:avoid;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+<div class="paper">
+
+
+<!-- ======================================================
+     HEADER
+====================================================== -->
+
+<div class="header">
+
+    <div class="course">
+        FCBM • Financial Accounting
+    </div>
+
+    <h1>
+        Accounting Principles
+    </h1>
+
+    <div class="subtitle">
+        Case-Based Multiple Choice Class Test
+    </div>
+
+    <div class="math-line"></div>
+
+</div>
+
+
+<!-- ======================================================
+     TEST INFORMATION
+====================================================== -->
+
+<div class="test-info">
+
+    <div class="info-box">
+        Questions
+        <br>
+        <strong>15</strong>
+    </div>
+
+    <div class="info-box">
+        Marks / Question
+        <br>
+        <strong>2</strong>
+    </div>
+
+    <div class="info-box">
+        Maximum Marks
+        <br>
+        <strong>30</strong>
+    </div>
+
+    <div class="info-box">
+        Attempt
+        <br>
+        <strong>One Only</strong>
+    </div>
+
+</div>
+
+
+<!-- ======================================================
+     INSTRUCTIONS
+====================================================== -->
+
+<div class="instructions">
+
+<h2>Instructions</h2>
+
+<ul>
+
+<li>
+There are <strong>15 case-based MCQs</strong>.
+</li>
+
+<li>
+Each question carries <strong>2 marks</strong>.
+</li>
+
+<li>
+Maximum marks are <strong>30</strong>.
+</li>
+
+<li>
+Select <strong>one correct option</strong> for every question.
+</li>
+
+<li>
+Each question should be attempted only once.
+</li>
+
+<li>
+After clicking <strong>Submit Test</strong>, the test will be locked.
+</li>
+
+<li>
+Unattempted questions will receive <strong>0 marks</strong>.
+</li>
+
+</ul>
+
+</div>
+
+
+<!-- ======================================================
+     QUESTIONS
+====================================================== -->
+
+<form id="quizForm">
+
+<div class="questions" id="questionsContainer"></div>
+
+
+<!-- ======================================================
+     SUBMIT
+====================================================== -->
+
+<div class="submit-area">
+
+<button
+    type="button"
+    class="submit-btn"
+    id="submitBtn"
+    onclick="submitTest()">
+
+    Submit Test
+
+</button>
+
+
+<!-- RESULT -->
+
+<div id="result">
+
+    <div class="score" id="scoreText"></div>
+
+    <div class="percentage" id="percentageText"></div>
+
+    <div class="result-details" id="resultDetails"></div>
+
+</div>
+
+</div>
+
+</form>
+
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+
+<footer>
+
+    Accounting Principles • Case-Based Class Test
+
+    <br>
+
+    15 Questions × 2 Marks = 30 Marks
+
+</footer>
+
+
+</div>
+
+</div>
+
+
+<script>
+
+
+/* =========================================================
+   QUESTION DATA
+========================================================= */
+
+const questions = [
+
+/* ---------------------------------------------------------
+   QUESTION 1
+--------------------------------------------------------- */
+
+{
+    case:
+    "Riya started a small consultancy business. She purchased a laptop for ₹60,000 and recorded the purchase in the business books. The laptop will be used for business activities for several years.",
+
+    q:
+    "Which accounting principle supports treating the laptop as a business asset rather than a personal expense?",
+
+    o:[
+        "Business Entity Principle",
+        "Matching Principle",
+        "Realisation Principle",
+        "Conservatism Principle"
+    ],
+
+    a:0
+},
+
+
+/* ---------------------------------------------------------
+   QUESTION 2
+--------------------------------------------------------- */
+
+{
+    case:
+    "ABC Ltd. purchased office furniture for ₹80,000. The owner also has a personal sofa worth ₹50,000 at home. The accountant records only the office furniture in the company's books.",
+
+    q:
+    "Which principle is being applied?",
+
+    o:[
+        "Going Concern Principle",
+        "Business Entity Principle",
+        "Consistency Principle",
+        "Revenue Recognition Principle"
+    ],
+
+    a:1
+},
+
+
+/* ---------------------------------------------------------
+   QUESTION 3
+--------------------------------------------------------- */
+
+{
+    case:
+    "A company purchased machinery for ₹5,00,000. The accountant records the machinery at its purchase cost rather than at its current market value of ₹5,80,000.",
+
+    q:
+    "Which accounting principle is mainly reflected in this treatment?",
+
+    o:[
+        "Historical Cost Principle",
+        "Matching Principle",
+        "Full Disclosure Principle",
+        "Business Entity Principle"
+    ],
+
+    a:0
+},
+
+
+/* ---------------------------------------------------------
+   QUESTION 4
+--------------------------------------------------------- */
+
+{
+    case:
+    "XYZ Ltd. has been operating successfully for many years. Management prepares financial statements assuming that the business will continue operating in the foreseeable future.",
+
+    q:
+    "Which principle supports this assumption?",
+
+    o:[
+        "Going Concern Principle",
+        "Dual Aspect Principle",
+        "Cost Principle",
+        "Materiality Principle"
+    ],
+
+    a:0
+},
+
+
+/* ---------------------------------------------------------
+   QUESTION 5
+--------------------------------------------------------- */
+
+{
+    case:
+    "A company earned ₹1,20,000 from services in March. The customer will pay the amount in April. The accountant records the income in March because the service was completed in March.",
+
+    q:
+    "Which accounting concept is most closely related to this treatment?",
+
+    o:[
+        "Accrual Concept",
+        "Money Measurement Concept",
+        "Business Entity Concept",
+        "Conservatism Concept"
+    ],
+
+    a:0
+},
+
+
+/* ---------------------------------------------------------
+   QUESTION 6
+--------------------------------------------------------- */
+
+{
+    case:
+    "A business paid ₹24,000 for one year's insurance policy. At the end of the accounting year, only ₹18,000 relates to the current year and ₹6,000 relates to the next year.",
+
+    q:
+    "Which principle requires the ₹18,000 expense to be matched with the current year's revenue?",
+
+    o:[
+        "Matching Principle",
+        "Going Concern Principle",
+        "Historical Cost Principle",
+        "Dual Aspect Principle"
+    ],
+
+    a:0
+},
+
+
+/* ---------------------------------------------------------
+   QUESTION 7
+--------------------------------------------------------- */
+
+{
+    case:
+    "A company has followed the same method of depreciation for its machinery for the last three years. The accountant continues using the same method this year to make financial statements comparable.",
+
+    q:
+    "Which accounting principle is being followed?",
+
+    o:[
+        "Consistency Principle",
+        "Realisation Principle",
+        "Business Entity Principle",
+        "Cost Principle"
+    ],
+
+    a:0
+},
+
+
+/* ---------------------------------------------------------
+   QUESTION 8
+--------------------------------------------------------- */
+
+{
+    case:
+    "A company is preparing its annual financial statements. It decides to disclose a significant legal case that may affect the company's financial position.",
+
+    q:
+    "Which accounting principle requires important information to be disclosed to users?",
+
+    o:[
+        "Full Disclosure Principle",
+        "Going Concern Principle",
+        "Dual Aspect Principle",
+        "Cost Principle"
+    ],
+
+    a:0
+},
+
+
+/* ---------------------------------------------------------
+   QUESTION 9
+--------------------------------------------------------- */
+
+{
+    case:
+    "A company is unsure whether a customer will pay ₹2,00,000. Based on available evidence, management expects that ₹30,000 may not be collected and creates an allowance for doubtful debts.",
+
+    q:
+    "Which principle supports recognising the possible loss?",
+
+    o:[
+        "Conservatism Principle",
+        "Business Entity Principle",
+        "Consistency Principle",
+        "Money Measurement Principle"
+    ],
+
+    a:0
+},
+
+
+/* ---------------------------------------------------------
+   QUESTION 10
+--------------------------------------------------------- */
+
+{
+    case:
+    "A business purchases a machine for ₹4,00,000. The accountant records the transaction with a debit to machinery and a credit to cash.",
+
+    q:
+    "Which accounting principle explains that every transaction has two aspects?",
+
+    o:[
+        "Dual Aspect Principle",
+        "Matching Principle",
+        "Going Concern Principle",
+        "Full Disclosure Principle"
+    ],
+
+    a:0
+},
+
+
+/* ---------------------------------------------------------
+   QUESTION 11
+--------------------------------------------------------- */
+
+{
+    case:
+    "A business receives ₹50,000 in advance from a customer for services that will be provided next month. The accountant does not immediately treat the entire amount as current revenue.",
+
+    q:
+    "Which concept is most relevant to this treatment?",
+
+    o:[
+        "Revenue Recognition Principle",
+        "Historical Cost Principle",
+        "Business Entity Principle",
+        "Consistency Principle"
+    ],
+
+    a:0
+},
+
+
+/* ---------------------------------------------------------
+   QUESTION 12
+--------------------------------------------------------- */
+
+{
+    case:
+    "A company purchases a small office stationery item costing ₹200. The accountant does not create a separate asset account because the amount is insignificant.",
+
+    q:
+    "Which accounting principle supports this practical treatment?",
+
+    o:[
+        "Materiality Principle",
+        "Going Concern Principle",
+        "Dual Aspect Principle",
+        "Realisation Principle"
+    ],
+
+    a:0
+},
+
+
+/* ---------------------------------------------------------
+   QUESTION 13
+--------------------------------------------------------- */
+
+{
+    case:
+    "A business owns skilled employees, good management and a strong reputation. However, the accountant records only those items that can be reliably expressed in monetary terms in the accounting records.",
+
+    q:
+    "Which accounting concept explains this limitation?",
+
+    o:[
+        "Money Measurement Concept",
+        "Matching Concept",
+        "Consistency Concept",
+        "Going Concern Concept"
+    ],
+
+    a:0
+},
+
+
+/* ---------------------------------------------------------
+   QUESTION 14
+--------------------------------------------------------- */
+
+{
+    case:
+    "A company bought goods for ₹1,00,000 and later sold them for ₹1,40,000. The accountant recognises the sales revenue when the goods are sold and the revenue is earned.",
+
+    q:
+    "Which principle is mainly related to recognising the revenue?",
+
+    o:[
+        "Revenue Recognition Principle",
+        "Business Entity Principle",
+        "Historical Cost Principle",
+        "Materiality Principle"
+    ],
+
+    a:0
+},
+
+
+/* ---------------------------------------------------------
+   QUESTION 15
+--------------------------------------------------------- */
+
+{
+    case:
+    "A company prepares financial statements using accounting rules and policies consistently from year to year. This helps investors compare the company's performance across different years.",
+
+    q:
+    "Which accounting principle is most directly involved?",
+
+    o:[
+        "Consistency Principle",
+        "Conservatism Principle",
+        "Money Measurement Principle",
+        "Business Entity Principle"
+    ],
+
+    a:0
+}
+
+];
+
+
+/* =========================================================
+   CREATE QUESTIONS
+========================================================= */
+
+const container =
+document.getElementById("questionsContainer");
+
+
+questions.forEach((item,index)=>{
+
+    const number=index+1;
+
+    const questionDiv=
+        document.createElement("div");
+
+    questionDiv.className="question";
+
+    questionDiv.id="q"+number;
+
+
+    let html=`
+
+        <div class="case-box">
+
+            <div class="case-title">
+                Case ${number}
+            </div>
+
+            ${item.case}
+
+        </div>
+
+
+        <div class="question-text">
+
+            <span class="number">
+                ${number}.
+            </span>
+
+            ${item.q}
+
+            <span class="marks">
+                2 Marks
+            </span>
+
+        </div>
+
+    `;
+
+
+    item.o.forEach((option,index2)=>{
+
+        const letter=
+            String.fromCharCode(65+index2);
+
+        html+=`
+
+            <label
+                class="option"
+                id="q${number}${letter}">
+
+                <input
+                    type="radio"
+                    name="q${number}"
+                    value="${index2}">
+
+                <span class="letter">
+                    (${letter})
+                </span>
+
+                ${option}
+
+            </label>
+
+        `;
+
+    });
+
+
+    questionDiv.innerHTML=html;
+
+    container.appendChild(questionDiv);
+
+});
+
+
+/* =========================================================
+   SUBMIT TEST
+========================================================= */
+
+function submitTest(){
+
+    /*
+       Check one-attempt restriction
+    */
+
+    if(
+        localStorage.getItem(
+            "accounting_principles_test_submitted"
+        )==="yes"
+    ){
+
+        alert(
+            "This test has already been submitted on this browser. Your attempt is locked."
+        );
+
+        return;
+    }
+
+
+    let score=0;
+
+    let attempted=0;
+
+
+    /* Check all questions */
+
+    questions.forEach((item,index)=>{
+
+        const number=index+1;
+
+
+        const selected=
+            document.querySelector(
+                `input[name="q${number}"]:checked`
+            );
+
+
+        if(selected){
+
+            attempted++;
+
+
+            const selectedAnswer=
+                Number(selected.value);
+
+
+            /* Correct answer */
+
+            if(
+                selectedAnswer===item.a
+            ){
+
+                score+=2;
+
+
+                document
+                .getElementById(
+                    `q${number}${String.fromCharCode(65+item.a)}`
+                )
+                .classList.add("correct");
+
+            }
+
+
+            /* Wrong answer */
+
+            else{
+
+                document
+                .getElementById(
+                    `q${number}${String.fromCharCode(65+selectedAnswer)}`
+                )
+                .classList.add("wrong");
+
+
+                document
+                .getElementById(
+                    `q${number}${String.fromCharCode(65+item.a)}`
+                )
+                .classList.add("correct");
+
+            }
+
+        }
+
+
+        /* Unanswered */
+
+        else{
+
+            document
+            .getElementById(
+                `q${number}`
+            )
+            .classList.add("unanswered");
+
+
+            document
+            .getElementById(
+                `q${number}${String.fromCharCode(65+item.a)}`
+            )
+            .classList.add("correct");
+
+        }
+
+    });
+
+
+    const totalMarks=
+        questions.length*2;
+
+
+    const percentage=
+        ((score/totalMarks)*100).toFixed(2);
+
+
+    const incorrect=
+        attempted-score/2;
+
+
+    const unanswered=
+        questions.length-attempted;
+
+
+    /* =====================================================
+       SHOW RESULT
+    ===================================================== */
+
+    document
+    .getElementById("scoreText")
+    .innerHTML=
+        `Marks Obtained: ${score} / ${totalMarks}`;
+
+
+    document
+    .getElementById("percentageText")
+    .innerHTML=
+        `Percentage: ${percentage}%`;
+
+
+    document
+    .getElementById("resultDetails")
+    .innerHTML=`
+
+        <strong>Final Result</strong>
+
+        <br>
+
+        Total Questions:
+        <strong>${questions.length}</strong>
+
+        <br>
+
+        Attempted:
+        <strong>${attempted}</strong>
+
+        <br>
+
+        Correct:
+        <strong>${score/2}</strong>
+
+        <br>
+
+        Incorrect:
+        <strong>${incorrect}</strong>
+
+        <br>
+
+        Unanswered:
+        <strong>${unanswered}</strong>
+
+        <br>
+
+        Total Marks:
+        <strong>${score} / ${totalMarks}</strong>
+
+    `;
+
+
+    document
+    .getElementById("result")
+    .style.display="block";
+
+
+    /* Disable submit button */
+
+    const button=
+        document.getElementById("submitBtn");
+
+
+    button.disabled=true;
+
+
+    button.innerHTML=
+        "Test Submitted — Attempt Locked";
+
+
+    /* Disable all options */
+
+    document
+    .querySelectorAll(
+        'input[type="radio"]'
+    )
+    .forEach(input=>{
+
+        input.disabled=true;
+
+    });
+
+
+    /* Save attempt */
+
+    localStorage.setItem(
+        "accounting_principles_test_submitted",
+        "yes"
+    );
+
+
+    /* Scroll to result */
+
+    document
+    .getElementById("result")
+    .scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+}
+
+</script>
+
+</body>
+</html>
