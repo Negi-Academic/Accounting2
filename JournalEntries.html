@@ -1719,7 +1719,74 @@ function generateEntry(){
     /* =================================================
        PURCHASE
     ================================================= */
+else if(
+    text.includes("goods given as charity") ||
+    text.includes("goods given for charity") ||
+    text.includes("goods donated") ||
+    text.includes("goods donated to charity") ||
+    text.includes("goods given as donation") ||
+    text.includes("goods donated as charity") ||
+    text.includes("goods given away as charity")
+){
 
+    rows = [
+        {
+            account: "Charity",
+            debit: amount,
+            credit: 0
+        },
+        {
+            account: "Purchase",
+            debit: 0,
+            credit: amount
+        }
+    ];
+
+    narration = language === "en"
+        ? "Being goods given as charity."
+        : "माल को दान के रूप में दिया गया।";
+
+    trading = language === "en"
+        ? `<span class="yes">✓ Purchase reduced by ₹${money(amount)}</span><br>
+           Goods given as charity are deducted from purchases.`
+        : `<span class="yes">✓ Purchase ₹${money(amount)} से कम होगा</span><br>
+           दान में दिए गए माल को खरीद से घटाया जाता है।`;
+
+    profitLoss = language === "en"
+        ? `<span class="yes">✓ Charity → Debit ₹${money(amount)}</span><br>
+           Charity is an indirect expense.`
+        : `<span class="yes">✓ Charity → Debit ₹${money(amount)}</span><br>
+           Charity एक अप्रत्यक्ष व्यय है।`;
+
+    balanceSheet = language === "en"
+        ? `✓ Goods/Stock decreases ₹${money(amount)}<br>
+           ✓ No cash effect`
+        : `✓ माल/स्टॉक ₹${money(amount)} कम होगा<br>
+           ✓ नकद पर कोई प्रभाव नहीं`;
+
+    assets = language === "en"
+        ? `Goods/Stock ↓ ₹${money(amount)}`
+        : `माल/स्टॉक ↓ ₹${money(amount)}`;
+
+    liabilities = language === "en"
+        ? `No direct change`
+        : `कोई सीधा परिवर्तन नहीं`;
+
+    capital = language === "en"
+        ? `Decreases through Charity expense`
+        : `Charity व्यय के कारण पूंजी कम होगी`;
+
+    explanation = language === "en"
+        ? `Goods have been taken out of the business and given as charity.
+           Since no cash has been paid, Cash A/c is not involved.
+           Charity is an indirect expense, so Charity A/c is debited.
+           Purchase A/c is credited because the goods have been withdrawn
+           from the goods available for trading.`
+        : `व्यवसाय का माल दान के रूप में बाहर दिया गया है।
+           इसमें नकद भुगतान नहीं हुआ, इसलिए Cash A/c शामिल नहीं है।
+           Charity एक अप्रत्यक्ष व्यय है, इसलिए Charity A/c को Debit किया जाता है।
+           माल trading के लिए उपलब्ध नहीं रहा, इसलिए Purchase A/c को Credit किया जाता है.`;
+}
     else if(
 
         text.includes("purchase") ||
