@@ -2456,12 +2456,88 @@ else if(
 
 
     /* =================================================
-       MACHINERY
+       PLANT & MACHINERY
     ================================================= */
+/* =================================================
+   PAYMENT TO SUPPLIER FOR PLANT & MACHINERY
+   EXISTING SUPPLIER LIABILITY
+================================================= */
 
+else if(
+    (
+        text.includes("paid a cheque") ||
+        text.includes("paid cheque") ||
+        text.includes("cheque paid") ||
+        text.includes("paid by cheque")
+    ) &&
+    (
+        text.includes("supplier") ||
+        text.includes("creditor")
+    ) &&
+    (
+        text.includes("plant") ||
+        text.includes("machinery") ||
+        text.includes("machine")
+    )
+){
+
+    rows = [
+        {
+            account: "Supplier / Creditor",
+            debit: amount,
+            credit: 0
+        },
+        {
+            account: "Bank",
+            debit: 0,
+            credit: amount
+        }
+    ];
+
+    narration = language === "en"
+        ? `Being cheque of ₹${money(amount)} paid to the supplier for plant and machinery.`
+        : `प्लांट एवं मशीनरी के सप्लायर को ₹${money(amount)} का चेक भुगतान किया गया।`;
+
+    trading = language === "en"
+        ? `<span class="no">✗ No effect on Trading Account</span>`
+        : `<span class="no">✗ Trading Account पर कोई प्रभाव नहीं</span>`;
+
+    profitLoss = language === "en"
+        ? `<span class="no">✗ No direct effect on Profit & Loss Account</span>`
+        : `<span class="no">✗ Profit & Loss Account पर कोई सीधा प्रभाव नहीं</span>`;
+
+    balanceSheet = language === "en"
+        ? `✓ Bank decreases ₹${money(amount)}<br>
+           ✓ Supplier/Creditor liability decreases ₹${money(amount)}`
+        : `✓ Bank ₹${money(amount)} कम होगा<br>
+           ✓ Supplier/Creditor की देयता ₹${money(amount)} कम होगी`;
+
+    assets = language === "en"
+        ? `Bank ↓ ₹${money(amount)}`
+        : `Bank ↓ ₹${money(amount)}`;
+
+    liabilities = language === "en"
+        ? `Supplier/Creditor ↓ ₹${money(amount)}`
+        : `Supplier/Creditor ↓ ₹${money(amount)}`;
+
+    capital = language === "en"
+        ? `No direct change`
+        : `कोई सीधा परिवर्तन नहीं`;
+
+    explanation = language === "en"
+        ? `The supplier is already a creditor of the business. 
+           Therefore, payment settles the existing liability. 
+           Supplier/Creditor A/c is debited and Bank A/c is credited. 
+           Plant & Machinery is not debited again because the asset purchase 
+           has already been recorded when the liability was created.`
+        : `Supplier पहले से व्यवसाय का creditor है। इसलिए यह payment 
+           पुरानी देयता को समाप्त करता है। Supplier/Creditor A/c को Debit 
+           और Bank A/c को Credit किया जाएगा। Plant & Machinery को दोबारा 
+           Debit नहीं किया जाएगा क्योंकि asset की purchase पहले ही record हो चुकी है।`;
+}
     else if(
 
-        text.includes("machinery") ||
+        text.includes("plant & machinery") ||
         text.includes("machine")
 
     ){
@@ -2469,7 +2545,7 @@ else if(
         rows=[
 
             {
-                account:"Machinery",
+                account:"plant & Machinery",
                 debit:amount,
                 credit:0
             },
@@ -2484,7 +2560,7 @@ else if(
 
 
         narration=language==="en"
-            ? "Being machinery purchased."
+            ? "Being plant & machinery purchased."
             : "मशीनरी खरीदी गई।";
 
 
@@ -2494,12 +2570,12 @@ else if(
 
 
         balanceSheet=language==="en"
-            ? `✓ Machinery → Fixed Asset`
+            ? `✓ plant & Machinery → Fixed Asset`
             : `✓ मशीनरी → स्थायी संपत्ति`;
 
 
         assets=language==="en"
-            ? `Machinery ↑ ₹${money(amount)}<br>
+            ? `plant & Machinery ↑ ₹${money(amount)}<br>
                Cash/Bank ↓ ₹${money(amount)}`
             : `मशीनरी ↑ ₹${money(amount)}<br>
                नकद/बैंक ↓ ₹${money(amount)}`;
@@ -2516,7 +2592,7 @@ else if(
 
 
         explanation=language==="en"
-            ? `Machinery is a fixed asset.
+            ? `plant & Machinery is a fixed asset.
                It is capitalised and shown in the Balance Sheet.`
             : `मशीनरी एक स्थायी संपत्ति है।
                इसे capitalise करके Balance Sheet में दिखाया जाता है।`;
@@ -2673,9 +2749,9 @@ else if(
         let asset="Furniture";
 
 
-        if(text.includes("machinery") ||
+        if(text.includes("plant & machinery") ||
            text.includes("machine"))
-            asset="Machinery";
+            asset="plant & Machinery";
 
 
         if(text.includes("building"))
