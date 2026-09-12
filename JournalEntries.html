@@ -1094,60 +1094,7 @@ function generateEntry(){
     /* =================================================
        COMPOUND PURCHASE
     ================================================= */
-else if(
-    (
-        text.includes("plant") ||
-        text.includes("machinery") ||
-        text.includes("machine")
-    ) &&
-    (
-        text.includes("purchase") ||
-        text.includes("purchased") ||
-        text.includes("bought")
-    ) &&
-    (
-        text.includes("cash") ||
-        text.includes("immediately")
-    )
-){
 
-    // Total purchase amount
-    let totalAmount = amount;
-
-    // Find cash amount
-    let cashMatch = text.match(
-        /(?:paying|paid|payment|pay)\s*(?:rupees|rs\.?|₹|inr)?\s*([\d,]+)\s*(?:cash)?/i
-    );
-
-    let cashAmount = cashMatch
-        ? Number(cashMatch[1].replace(/,/g, ""))
-        : 0;
-
-    let supplierAmount = totalAmount - cashAmount;
-
-    rows = [
-        {
-            account: "Plant & Machinery",
-            debit: totalAmount,
-            credit: 0
-        },
-        {
-            account: "Cash",
-            debit: 0,
-            credit: cashAmount
-        },
-        {
-            account: "Supplier / Creditor",
-            debit: 0,
-            credit: supplierAmount
-        }
-    ];
-
-    narration = language === "en"
-        ? `Being plant and machinery purchased for ₹${money(totalAmount)}, ₹${money(cashAmount)} paid in cash immediately and the balance due to supplier.`
-        : `₹${money(totalAmount)} की प्लांट एवं मशीनरी खरीदी गई, जिसमें ₹${money(cashAmount)} नकद तुरंत भुगतान किया गया तथा शेष राशि सप्लायर को देय है।`;
-
-}
     if(
 
         (text.includes("purchase") ||
