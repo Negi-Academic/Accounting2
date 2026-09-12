@@ -301,6 +301,7 @@ th{
     <h2 id="subtitle">
         Accounting Learning Assistant
     </h2>
+    <h3>Faculty of Commerce and Business Management</h3>
 
     <p id="tagline">
         Journal Entry • Final Accounts • Accounting Explanation
@@ -642,2962 +643,876 @@ th{
 </div>
 
 
+
 <script>
-
-
-/* =====================================================
-   LANGUAGE
-===================================================== */
-
 let language = "en";
 
-
 const lang = {
-
-    en: {
-
+    en:{
         subtitle:"Accounting Learning Assistant",
-
         tagline:"Journal Entry • Final Accounts • Accounting Explanation",
-
         input:"Enter Business Transaction",
-
         placeholder:"Example: Purchase goods Rs.40000 for cash and Rs.45000 on account.",
-
-        generate:"Generate Journal Entry",
-
-        clear:"Clear",
-
-        try:"Try these:",
-
-        transaction:"Transaction",
-
-        journal:"Journal Entry",
-
-        particulars:"Particulars",
-
-        debit:"Debit (₹)",
-
-        credit:"Credit (₹)",
-
-        narration:"Narration:",
-
-        final:"Final Accounts Treatment",
-
-        trading:"Trading Account",
-
-        pl:"Profit & Loss Account",
-
-        bs:"Balance Sheet",
-
-        equation:"Accounting Equation Effect",
-
-        assets:"Assets",
-
-        liabilities:"Liabilities",
-
-        capital:"Capital / Equity",
-
-        why:"Why This Entry?",
-
-        total:"Total",
-
-        noEffect:"✗ No direct effect"
-
+        generate:"Generate Journal Entry", clear:"Clear", try:"Try these:",
+        transaction:"Transaction", journal:"Journal Entry", particulars:"Particulars",
+        debit:"Debit (₹)", credit:"Credit (₹)", narration:"Narration:",
+        final:"Final Accounts Treatment", trading:"Trading Account",
+        pl:"Profit & Loss Account", bs:"Balance Sheet",
+        equation:"Accounting Equation Effect", assets:"Assets",
+        liabilities:"Liabilities", capital:"Capital / Equity",
+        why:"Why This Entry?", total:"Total", noEffect:"✗ No direct effect"
     },
-
-
-    hi: {
-
+    hi:{
         subtitle:"लेखांकन सीखने का सहायक",
-
         tagline:"जर्नल एंट्री • अंतिम खाते • लेखांकन व्याख्या",
-
         input:"व्यावसायिक लेन-देन लिखें",
-
         placeholder:"उदाहरण: Purchase goods Rs.40000 for cash and Rs.45000 on account.",
-
-        generate:"जर्नल एंट्री बनाएं",
-
-        clear:"साफ करें",
-
-        try:"इन उदाहरणों को आज़माएं:",
-
-        transaction:"लेन-देन",
-
-        journal:"जर्नल प्रविष्टि",
-
-        particulars:"विवरण",
-
-        debit:"नामे (₹)",
-
-        credit:"जमा (₹)",
-
-        narration:"विवरण:",
-
-        final:"अंतिम खातों में उपचार",
-
-        trading:"व्यापारिक खाता",
-
-        pl:"लाभ-हानि खाता",
-
-        bs:"स्थिति विवरण",
-
-        equation:"लेखांकन समीकरण पर प्रभाव",
-
-        assets:"संपत्तियां",
-
-        liabilities:"दायित्व",
-
-        capital:"पूंजी / स्वामी की इक्विटी",
-
-        why:"यह प्रविष्टि क्यों?",
-
-        total:"कुल",
-
-        noEffect:"✗ कोई सीधा प्रभाव नहीं"
-
+        generate:"जर्नल एंट्री बनाएं", clear:"साफ करें", try:"इन उदाहरणों को आज़माएं:",
+        transaction:"लेन-देन", journal:"जर्नल प्रविष्टि", particulars:"विवरण",
+        debit:"नामे (₹)", credit:"जमा (₹)", narration:"विवरण:",
+        final:"अंतिम खातों में उपचार", trading:"व्यापारिक खाता",
+        pl:"लाभ-हानि खाता", bs:"स्थिति विवरण",
+        equation:"लेखांकन समीकरण पर प्रभाव", assets:"संपत्तियां",
+        liabilities:"दायित्व", capital:"पूंजी / स्वामी की इक्विटी",
+        why:"यह प्रविष्टि क्यों?", total:"कुल", noEffect:"✗ कोई सीधा प्रभाव नहीं"
     }
-
 };
 
-
 function setLanguage(l){
-
     language=l;
-
     const x=lang[l];
-
-
-    document.getElementById("englishBtn")
-        .classList.toggle("active",l==="en");
-
-    document.getElementById("hindiBtn")
-        .classList.toggle("active",l==="hi");
-
-
+    document.getElementById("englishBtn").classList.toggle("active",l==="en");
+    document.getElementById("hindiBtn").classList.toggle("active",l==="hi");
     document.getElementById("subtitle").innerText=x.subtitle;
-
     document.getElementById("tagline").innerText=x.tagline;
-
     document.getElementById("inputLabel").innerText=x.input;
-
     document.getElementById("transaction").placeholder=x.placeholder;
-
     document.getElementById("generateBtn").innerText=x.generate;
-
     document.getElementById("clearBtn").innerText=x.clear;
-
     document.getElementById("tryText").innerText=x.try;
-
     document.getElementById("transactionHeading").innerText=x.transaction;
-
     document.getElementById("journalHeading").innerText=x.journal;
-
     document.getElementById("particularHeading").innerText=x.particulars;
-
     document.getElementById("debitHeading").innerText=x.debit;
-
     document.getElementById("creditHeading").innerText=x.credit;
-
     document.getElementById("narrationHeading").innerText=x.narration;
-
     document.getElementById("finalHeading").innerText=x.final;
-
     document.getElementById("tradingHeading").innerText=x.trading;
-
     document.getElementById("plHeading").innerText=x.pl;
-
     document.getElementById("bsHeading").innerText=x.bs;
-
     document.getElementById("equationHeading").innerText=x.equation;
-
     document.getElementById("assetHeading").innerText=x.assets;
-
     document.getElementById("liabilityHeading").innerText=x.liabilities;
-
     document.getElementById("capitalHeading").innerText=x.capital;
-
     document.getElementById("whyHeading").innerText=x.why;
-
-
-    if(document.getElementById("result").style.display==="block"){
-
-        generateEntry();
-
-    }
-
+    if(document.getElementById("result").style.display==="block") generateEntry();
 }
 
-
-/* =====================================================
-   NUMBER FUNCTIONS
-===================================================== */
-
-function getNumbers(text){
-
-    let matches=text.match(
-        /(?:₹|rs\.?|inr)?\s*\d[\d,]*(?:\.\d+)?/gi
-    );
-
-
-    if(!matches)
-        return [];
-
-
-    return matches.map(v=>{
-
-        let n=v
-            .replace(/₹/gi,"")
-            .replace(/rs\.?/gi,"")
-            .replace(/inr/gi,"")
-            .replace(/,/g,"")
-            .trim();
-
-
-        return parseFloat(n);
-
-    }).filter(v=>!isNaN(v));
-
+function normalize(t){
+    t=(t||"").toLowerCase().replace(/[’']/g,"");
+    const fixes={
+        "\\bform\\b":"from","\\bpurchse\\b":"purchase","\\bpurchaed\\b":"purchased",
+        "\\bsalery\\b":"salary","\\brecieved\\b":"received","\\breceieved\\b":"received",
+        "\\bdiscound\\b":"discount","\\bmoeny\\b":"money","\\bmachinnery\\b":"machinery",
+        "\\bmachinary\\b":"machinery","\\bcheque\\b":"cheque","\\bchecks\\b":"cheque",
+        "\\bchk\\b":"cheque"
+    };
+    Object.keys(fixes).forEach(k=>t=t.replace(new RegExp(k,"g"),fixes[k]));
+    return t.replace(/\s+/g," ").trim();
 }
-
 
 function money(n){
-
-    if(n===0)
-        return "0";
-
-
-    return Number(n).toLocaleString("en-IN",{
-        maximumFractionDigits:2
-    });
-
+    return Number(n||0).toLocaleString("en-IN",{maximumFractionDigits:2});
 }
 
-
-/* =====================================================
-   NORMALISE LANGUAGE
-===================================================== */
-
-function normalize(text){
-
-    let t=text.toLowerCase();
-
-
-    // Common spelling mistakes
-
-    t=t.replace(/\bform\b/g,"from");
-
-    t=t.replace(/\bpurchse\b/g,"purchase");
-
-    t=t.replace(/\bpurchaed\b/g,"purchased");
-
-    t=t.replace(/\bsalery\b/g,"salary");
-
-    t=t.replace(/\brecieved\b/g,"received");
-
-    t=t.replace(/\breceieved\b/g,"received");
-
-    t=t.replace(/\bdiscound\b/g,"discount");
-
-    t=t.replace(/\bmoeny\b/g,"money");
-
-
-    return t;
-
+function getNumbers(text){
+    const s=(text||"").replace(/\b(?:rupees|rs|inr)\.?\s*/gi,"₹");
+    const m=s.match(/₹\s*\d[\d,]*(?:\.\d+)?|\b\d[\d,]*(?:\.\d+)?/gi);
+    if(!m) return [];
+    return m.map(v=>parseFloat(v.replace(/₹/g,"").replace(/,/g,"").trim()))
+            .filter(v=>Number.isFinite(v));
 }
 
-
-/* =====================================================
-   PERSON / PARTY
-===================================================== */
+function firstAmount(text){ return getNumbers(text)[0]||0; }
 
 function findParty(text){
-
-    let patterns=[
-
-        /from\s+([a-z][a-z\s]*?)(?=\s+(?:on|for|and|rs|₹|inr|at)\b|$)/i,
-
-        /to\s+([a-z][a-z\s]*?)(?=\s+(?:on|for|and|rs|₹|inr|at)\b|$)/i,
-
-        /from\s+([a-z]+)/i,
-
-        /to\s+([a-z]+)/i
-
+    const t=normalize(text);
+    const patterns=[
+        /(?:from|to|with)\s+([a-z][a-z\s]*?)(?=\s+(?:on|for|and|at|by|of|rs|₹|inr)\b|$)/i
     ];
-
-
-    for(let p of patterns){
-
-        let m=text.match(p);
-
+    for(const p of patterns){
+        const m=t.match(p);
         if(m){
-
-            let name=m[1]
-                .trim()
-                .replace(/\s+$/,"");
-
-
-            if(name &&
-               !["cash","bank","account","credit","the"].includes(name.toLowerCase()))
-                return name;
-
+            const n=m[1].trim();
+            if(n && !["cash","bank","account","credit","the","supplier","creditor"].includes(n))
+                return n;
         }
-
     }
-
-
     return "";
-
 }
 
-
-/* =====================================================
-   JOURNAL DISPLAY
-===================================================== */
-
-function showJournal(rows){
-
-    let html="";
-
-    let debitTotal=0;
-
-    let creditTotal=0;
-
-
-    rows.forEach(r=>{
-
-        debitTotal+=r.debit||0;
-
-        creditTotal+=r.credit||0;
-
-
-        html+=`
-
-        <tr>
-
-            <td>
-                ${r.debit
-                    ? "<strong>"+r.account+" A/c Dr.</strong>"
-                    : "&nbsp;&nbsp;&nbsp;To "+r.account+" A/c"
-                }
-            </td>
-
-            <td class="right">
-                ${r.debit ? money(r.debit) : ""}
-            </td>
-
-            <td class="right">
-                ${r.credit ? money(r.credit) : ""}
-            </td>
-
-        </tr>
-
-        `;
-
-    });
-
-
-    html+=`
-
-    <tr class="total">
-
-        <td>${lang[language].total}</td>
-
-        <td class="right">${money(debitTotal)}</td>
-
-        <td class="right">${money(creditTotal)}</td>
-
-    </tr>
-
-    `;
-
-
-    document.getElementById("journalBody").innerHTML=html;
-
+function setCommon(kind, amount, account, party=""){
+    const bank = kind==="bank";
+    return {
+        trading:`<span class="no">✗ ${language==="en"?"No direct effect":"कोई सीधा प्रभाव नहीं"}</span>`,
+        profitLoss:`<span class="no">✗ ${language==="en"?"No direct effect":"कोई सीधा प्रभाव नहीं"}</span>`,
+        balanceSheet: bank
+            ? `✓ Bank ${language==="en"?"changes":"में परिवर्तन"} ₹${money(amount)}`
+            : `✓ Cash ${language==="en"?"changes":"में परिवर्तन"} ₹${money(amount)}`,
+        assets: bank ? `Bank ₹${money(amount)}` : `Cash ₹${money(amount)}`,
+        liabilities:`${party||"No direct"} ${language==="en"?"change":"परिवर्तन"}`,
+        capital:language==="en"?"No direct change":"कोई सीधा परिवर्तन नहीं"
+    };
 }
 
-
-/* =====================================================
-   ERROR
-===================================================== */
-
-function showError(msg){
-
-    document.getElementById("error").innerText=msg;
-
-    document.getElementById("error").style.display="block";
-
-    document.getElementById("result").style.display="none";
-
+function resultData(rows,narration,trading,profitLoss,balanceSheet,assets,liabilities,capital,explanation){
+    return {rows,narration,trading,profitLoss,balanceSheet,assets,liabilities,capital,explanation};
 }
-
-
-function hideError(){
-
-    document.getElementById("error").style.display="none";
-
-}
-
-
-/* =====================================================
-   MAIN ACCOUNTING ENGINE
-===================================================== */
 
 function generateEntry(){
-
-    let original=document
-        .getElementById("transaction")
-        .value
-        .trim();
-
-
+    const original=document.getElementById("transaction").value.trim();
     if(!original){
-
-        showError(
-            language==="en"
-            ? "Please enter a business transaction."
-            : "कृपया कोई व्यावसायिक लेन-देन लिखें।"
-        );
-
+        showError(language==="en"?"Please enter a business transaction.":"कृपया कोई व्यावसायिक लेन-देन लिखें।");
         return;
-
     }
 
+    const text=normalize(original);
+    const nums=getNumbers(original);
+    const amount=nums[0]||0;
+    let d=null;
 
-    let text=normalize(original);
+    const has=(...a)=>a.some(x=>text.includes(x));
+    const isCash=has("cash");
+    const isBank=has("bank","cheque","check");
+    const moneyAccount=isBank?"Bank":"Cash";
+    const party=findParty(original);
 
-    let nums=getNumbers(original);
-
-    let amount=nums[0]||0;
-
-
-    let rows=[];
-
-    let narration="";
-
-    let trading="";
-
-    let profitLoss="";
-
-    let balanceSheet="";
-
-    let explanation="";
-
-    let assets="";
-
-    let liabilities="";
-
-    let capital="";
-
-
-    /* =================================================
-       COMPOUND PURCHASE
-    ================================================= */
-
-    if(
-
-        (text.includes("purchase") ||
-         text.includes("purchased") ||
-         text.includes("bought"))
-
-        &&
-
-        text.includes("cash")
-
-        &&
-
-        (
-            text.includes("on account") ||
-            text.includes("on credit") ||
-            text.includes("credit")
-        )
-
-        && nums.length>=2
-
-    ){
-
-        let cash=nums[0];
-
-        let credit=nums[1];
-
-        let total=cash+credit;
-
-
-        rows=[
-
-            {
-                account:"Purchase",
-                debit:total,
-                credit:0
-            },
-
-            {
-                account:"Cash",
-                debit:0,
-                credit:cash
-            },
-
-            {
-                account:"Creditors",
-                debit:0,
-                credit:credit
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? `Being goods purchased for cash ₹${money(cash)} and on account ₹${money(credit)}.`
-            : `₹${money(cash)} के नकद तथा ₹${money(credit)} उधार पर माल खरीदा गया।`;
-
-
-        trading=language==="en"
-            ? `<span class="yes">✓ Purchase → Debit ₹${money(total)}</span><br>
-               Total purchases are shown on the debit side of Trading A/c.`
-            : `<span class="yes">✓ Purchase → Debit ₹${money(total)}</span><br>
-               कुल खरीद व्यापारिक खाते के नामे पक्ष में दिखाई जाएगी।`;
-
-
-        profitLoss=language==="en"
-            ? `<span class="no">✗ No direct effect</span>`
-            : `<span class="no">✗ कोई सीधा प्रभाव नहीं</span>`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Cash decreases ₹${money(cash)}<br>
-               ✓ Creditors increase ₹${money(credit)}`
-            : `✓ नकद ₹${money(cash)} कम होगा<br>
-               ✓ लेनदार ₹${money(credit)} बढ़ेंगे`;
-
-
-        assets=language==="en"
-            ? `Cash ↓ ₹${money(cash)}`
-            : `नकद ↓ ₹${money(cash)}`;
-
-
-        liabilities=language==="en"
-            ? `Creditors ↑ ₹${money(credit)}`
-            : `लेनदार ↑ ₹${money(credit)}`;
-
-
-        capital=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        explanation=language==="en"
-            ? `This is a compound transaction. Total purchases are ₹${money(total)}.
-               ₹${money(cash)} is paid immediately in cash and ₹${money(credit)}
-               remains payable to creditors. Therefore Purchase A/c is debited
-               with the total amount, while Cash and Creditors are credited separately.`
-            : `यह एक संयुक्त प्रविष्टि है। कुल खरीद ₹${money(total)} है।
-               इसमें ₹${money(cash)} का भुगतान नकद किया गया और ₹${money(credit)}
-               लेनदारों को देना बाकी है। इसलिए Purchase A/c को कुल राशि से
-               Debit किया गया है तथा Cash और Creditors को अलग-अलग Credit किया गया है।`;
-
+    /* =========================================================
+       1. CAPITAL / OWNER
+    ========================================================= */
+    if(has("started business","started the business","business started with","capital introduced","introduced capital","owner introduced","proprietor introduced") && amount){
+        d=resultData(
+            [{account:moneyAccount,debit:amount,credit:0},{account:"Capital",debit:0,credit:amount}],
+            language==="en"?"Being capital introduced into the business.":"व्यवसाय में पूंजी लगाई गई।",
+            `<span class="no">✗ No effect</span>`,`<span class="no">✗ No effect</span>`,
+            `✓ ${moneyAccount} ↑ ₹${money(amount)}<br>✓ Capital ↑ ₹${money(amount)}`,
+            `${moneyAccount} ↑ ₹${money(amount)}`,
+            `No liability created`,`Capital ↑ ₹${money(amount)}`,
+            language==="en"?"Owner invests resources in the business, so the asset is debited and Capital is credited."
+            :"स्वामी द्वारा व्यवसाय में संसाधन लगाने पर संपत्ति Debit और Capital Credit होती है।"
+        );
     }
 
+    /* =========================================================
+       2. GOODS TAKEN FOR PERSONAL USE / CHARITY / SAMPLES
+       These must come before generic purchase.
+    ========================================================= */
+    else if(has("goods","stock") && has("personal use","private use","domestic use","proprietor","owner") && has("withdrawn","taken","used","taken away")){
+        d=resultData(
+            [{account:"Drawings",debit:amount,credit:0},{account:"Purchase",debit:0,credit:amount}],
+            language==="en"?"Being goods withdrawn by proprietor for personal use.":"स्वामी द्वारा निजी उपयोग के लिए माल निकाला गया।",
+            `✓ Purchase reduced by ₹${money(amount)}`,
+            `<span class="no">✗ No direct effect</span>`,
+            `✓ Stock decreases ₹${money(amount)}<br>✓ Drawings reduce Capital`,
+            `Stock ↓ ₹${money(amount)}`,
+            `No direct change`,`Capital ↓ ₹${money(amount)}`,
+            language==="en"?"Goods withdrawn by the proprietor are treated as Drawings, not as a business expense."
+            :"स्वामी द्वारा निजी उपयोग के लिए निकाला गया माल Drawings है, व्यवसाय का खर्च नहीं।"
+        );
+    }
+    else if(has("goods","stock") && has("charity","donation","donated","donate","charitable")){
+        d=resultData(
+            [{account:"Charity",debit:amount,credit:0},{account:"Purchase",debit:0,credit:amount}],
+            language==="en"?"Being goods given as charity.":"माल को दान के रूप में दिया गया।",
+            `✓ Purchase reduced by ₹${money(amount)}`,
+            `✓ Charity → Debit ₹${money(amount)}<br>Indirect expense`,
+            `✓ Stock decreases ₹${money(amount)}<br>✓ No cash effect`,
+            `Stock ↓ ₹${money(amount)}`,
+            `No direct change`,`Capital ↓ through Charity expense`,
+            language==="en"?"Charity is an indirect expense. Because business goods leave the stock without cash payment, Charity is debited and Purchase is credited."
+            :"दान व्यवसाय का अप्रत्यक्ष व्यय है। माल stock से बाहर जाता है और cash payment नहीं होता, इसलिए Charity Debit और Purchase Credit होता है।"
+        );
+    }
+    else if(has("goods","stock") && has("sample","samples","free sample","free samples","promotion","promotional")){
+        d=resultData(
+            [{account:"Advertisement / Samples",debit:amount,credit:0},{account:"Purchase",debit:0,credit:amount}],
+            language==="en"?"Being goods distributed as free samples/promotional goods.":"माल को निःशुल्क नमूने/प्रचार के लिए वितरित किया गया।",
+            `✓ Purchase reduced by ₹${money(amount)}`,
+            `✓ Advertisement / Samples → Debit ₹${money(amount)}`,
+            `✓ Stock decreases ₹${money(amount)}`,
+            `Stock ↓ ₹${money(amount)}`,
+            `No direct change`,`Capital ↓ through expense`,
+            language==="en"?"Goods used as free samples are an advertisement/promotion expense and are removed from purchases."
+            :"निःशुल्क नमूने प्रचार व्यय हैं और माल को Purchase से घटाया जाता है।"
+        );
+    }
+    else if(has("goods","stock") && has("fire","destroyed by fire","fire loss","theft","stolen","loss by theft")){
+        d=resultData(
+            [{account:"Loss by Fire / Theft",debit:amount,credit:0},{account:"Purchase",debit:0,credit:amount}],
+            language==="en"?"Being goods lost by fire/theft.":"माल आग/चोरी से नष्ट/खो गया।",
+            `✓ Purchase/stock adjustment ₹${money(amount)}`,
+            `✓ Loss by Fire / Theft → Debit ₹${money(amount)}`,
+            `✓ Stock decreases ₹${money(amount)}`,
+            `Stock ↓ ₹${money(amount)}`,
+            `No direct change`,`Capital ↓ through abnormal loss`,
+            language==="en"?"Goods lost abnormally are removed from goods available for sale and the loss is recognised separately."
+            :"असामान्य रूप से नष्ट माल को बिक्री योग्य माल से घटाकर हानि अलग से मान्य की जाती है।"
+        );
+    }
 
-    /* =================================================
-       COMPOUND SALES
-    ================================================= */
-
+    /* =========================================================
+       3. EXISTING LIABILITY PAYMENT — supplier/creditor
+    ========================================================= */
     else if(
-
-        (text.includes("sale") ||
-         text.includes("sold"))
-
-        && text.includes("cash")
-
-        && (
-            text.includes("on account") ||
-            text.includes("on credit") ||
-            text.includes("credit")
-        )
-
-        && nums.length>=2
-
+        has("supplier","creditor") &&
+        has("paid","payment","settled","settlement","cleared","cheque","check") &&
+        !has("purchase for","purchased for","buy")
     ){
-
-        let cash=nums[0];
-
-        let credit=nums[1];
-
-        let total=cash+credit;
-
-        let party=findParty(original)||"Debtor";
-
-
-        rows=[
-
-            {
-                account:"Cash",
-                debit:cash,
-                credit:0
-            },
-
-            {
-                account:party,
-                debit:credit,
-                credit:0
-            },
-
-            {
-                account:"Sales",
-                debit:0,
-                credit:total
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? `Being goods sold for cash ₹${money(cash)} and on credit ₹${money(credit)}.`
-            : `₹${money(cash)} का नकद तथा ₹${money(credit)} का उधार माल बेचा गया।`;
-
-
-        trading=language==="en"
-            ? `<span class="yes">✓ Sales → Credit ₹${money(total)}</span>`
-            : `<span class="yes">✓ Sales → Credit ₹${money(total)}</span>`;
-
-
-        profitLoss=language==="en"
-            ? `<span class="no">✗ No direct effect</span>`
-            : `<span class="no">✗ कोई सीधा प्रभाव नहीं</span>`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Cash increases ₹${money(cash)}<br>
-               ✓ Debtor ${party} increases ₹${money(credit)}`
-            : `✓ नकद ₹${money(cash)} बढ़ेगा<br>
-               ✓ देनदार ${party} ₹${money(credit)} बढ़ेगा`;
-
-
-        assets=language==="en"
-            ? `Cash ↑ ₹${money(cash)}<br>Debtor ↑ ₹${money(credit)}`
-            : `नकद ↑ ₹${money(cash)}<br>देनदार ↑ ₹${money(credit)}`;
-
-
-        liabilities=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        capital=language==="en"
-            ? `Sales affect profit after Trading A/c`
-            : `बिक्री का प्रभाव Trading A/c के बाद लाभ पर पड़ेगा`;
-
-
-        explanation=language==="en"
-            ? `This is a compound sales transaction. Cash sales and credit sales
-               are combined in one entry. Cash is debited for the amount received,
-               the debtor is debited for the credit sale, and Sales A/c is credited
-               with the total sales.`
-            : `यह एक संयुक्त बिक्री प्रविष्टि है। नकद बिक्री और उधार बिक्री
-               एक ही प्रविष्टि में शामिल हैं। प्राप्त नकद को Debit किया गया है,
-               देनदार को उधार बिक्री की राशि से Debit किया गया है और कुल बिक्री
-               को Sales A/c में Credit किया गया है।`;
-
+        const pay=amount;
+        d=resultData(
+            [{account:party||"Supplier / Creditor",debit:pay,credit:0},{account:moneyAccount,debit:0,credit:pay}],
+            language==="en"?`Being ₹${money(pay)} paid to supplier/creditor by ${moneyAccount.toLowerCase()}.`
+            :`Supplier/Creditor को ₹${money(pay)} का भुगतान किया गया।`,
+            `<span class="no">✗ No Trading effect</span>`,
+            `<span class="no">✗ No Profit & Loss effect</span>`,
+            `✓ ${moneyAccount} decreases ₹${money(pay)}<br>✓ Supplier/Creditor liability decreases ₹${money(pay)}`,
+            `${moneyAccount} ↓ ₹${money(pay)}`,
+            `Supplier/Creditor ↓ ₹${money(pay)}`,
+            `No direct change`,
+            language==="en"?"This settles an existing liability. The asset is not debited again."
+            :"यह पहले से बनी देयता का भुगतान है। Asset को दोबारा Debit नहीं किया जाता।"
+        );
     }
 
-
-    /* =================================================
-       RECEIPT + DISCOUNT ALLOWED
-    ================================================= */
-
+    /* =========================================================
+       4. PLANT/MACHINERY/FIXED ASSET PURCHASE WITH PARTIAL PAYMENT
+    ========================================================= */
     else if(
-
-        text.includes("received from") &&
-        text.includes("discount allowed") &&
-        nums.length>=2
-
+        has("plant","machinery","machine","furniture","building","vehicle","equipment","computer") &&
+        has("purchase","purchased","bought","acquired") &&
+        nums.length>=2 &&
+        has("cash","bank","cheque","immediately","paid")
     ){
+        let asset;
+        if(has("plant","machinery","machine")) asset="Plant & Machinery";
+        else if(has("furniture")) asset="Furniture";
+        else if(has("building")) asset="Building";
+        else if(has("vehicle")) asset="Vehicle";
+        else if(has("computer")) asset="Computer";
+        else asset="Equipment";
 
-        let cash=nums[0];
+        const total=nums[0];
+        let paid=nums[1];
 
-        let discount=nums[1];
+        // If wording says "paid Rs. X" and the first number is not the paid amount,
+        // identify the amount immediately following paid/paying/cheque.
+        const pm=text.match(/(?:paid|paying|payment|cheque|check)\s*(?:of\s*)?(?:rupees|rs\.?|₹|inr)?\s*([\d,]+)/i);
+        if(pm) paid=parseFloat(pm[1].replace(/,/g,""));
 
-        let total=cash+discount;
+        if(paid>total && nums.length>=2) paid=nums[1];
+        const due=total-paid;
 
-        let party=findParty(original)||"Mohan";
+        const rows=[{account:asset,debit:total,credit:0}];
+        if(paid>0) rows.push({account:moneyAccount,debit:0,credit:paid});
+        if(due>0) rows.push({account:"Supplier / Creditor",debit:0,credit:due});
 
-
-        rows=[
-
-            {
-                account:"Cash",
-                debit:cash,
-                credit:0
-            },
-
-            {
-                account:"Discount Allowed",
-                debit:discount,
-                credit:0
-            },
-
-            {
-                account:party,
-                debit:0,
-                credit:total
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? `Being amount received from ${party} and discount allowed.`
-            : `${party} से राशि प्राप्त हुई तथा छूट दी गई।`;
-
-
-        trading=`<span class="no">✗ ${language==="en"?"No direct effect":"कोई सीधा प्रभाव नहीं"}</span>`;
-
-
-        profitLoss=language==="en"
-            ? `<span class="yes">✓ Discount Allowed → Debit</span><br>
-               Indirect expense`
-            : `<span class="yes">✓ Discount Allowed → Debit</span><br>
-               अप्रत्यक्ष व्यय`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Cash ↑ ₹${money(cash)}<br>
-               ✓ ${party} Debtor ↓ ₹${money(total)}`
-            : `✓ नकद ↑ ₹${money(cash)}<br>
-               ✓ ${party} देनदार ↓ ₹${money(total)}`;
-
-
-        assets=language==="en"
-            ? `Cash ↑ ₹${money(cash)}<br>Debtor ↓ ₹${money(total)}`
-            : `नकद ↑ ₹${money(cash)}<br>देनदार ↓ ₹${money(total)}`;
-
-
-        liabilities=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        capital=language==="en"
-            ? `Decreases through Discount Allowed expense`
-            : `Discount Allowed व्यय के कारण कम होगा`;
-
-
-        explanation=language==="en"
-            ? `The amount due from ${party} was ₹${money(total)}.
-               The business received ₹${money(cash)} and allowed ₹${money(discount)}
-               as discount. Therefore Cash and Discount Allowed are debited,
-               while ${party} is credited with the full amount due.`
-            : `${party} से कुल ₹${money(total)} प्राप्त होने थे।
-               व्यवसाय को ₹${money(cash)} प्राप्त हुए और ₹${money(discount)} की छूट दी गई।
-               इसलिए Cash और Discount Allowed को Debit तथा ${party} को पूरी राशि से Credit किया गया।`;
-
+        d=resultData(
+            rows,
+            language==="en"
+                ?`Being ${asset.toLowerCase()} purchased for ₹${money(total)}, ₹${money(paid)} paid immediately and balance ₹${money(due)} due to supplier.`
+                :`₹${money(total)} की ${asset} खरीदी गई, ₹${money(paid)} तुरंत भुगतान किए गए तथा ₹${money(due)} सप्लायर को देय हैं।`,
+            `<span class="no">✗ No effect on Trading Account</span>`,
+            `<span class="no">✗ No direct effect on Profit & Loss Account</span>`,
+            `✓ ${asset} ↑ ₹${money(total)}<br>✓ ${moneyAccount} ↓ ₹${money(paid)}<br>${due>0?`✓ Supplier/Creditor ↑ ₹${money(due)}`:""}`,
+            `${asset} ↑ ₹${money(total)}<br>${moneyAccount} ↓ ₹${money(paid)}`,
+            due>0?`Supplier/Creditor ↑ ₹${money(due)}`:`No direct change`,
+            `No direct change`,
+            language==="en"?"The fixed asset is recorded at its full cost. The amount paid reduces Cash/Bank and the unpaid balance becomes a supplier liability."
+            :"स्थायी संपत्ति को उसकी पूरी लागत पर Record किया जाता है। भुगतान की गई राशि Cash/Bank को कम करती है और बाकी राशि Supplier की देयता बनती है।"
+        );
     }
 
-
-    /* =================================================
-       PAYMENT + DISCOUNT RECEIVED
-    ================================================= */
-
-    else if(
-
-        text.includes("paid to") &&
-        text.includes("discount received") &&
-        nums.length>=2
-
-    ){
-
-        let cash=nums[0];
-
-        let discount=nums[1];
-
-        let total=cash+discount;
-
-        let party=findParty(original)||"Creditor";
-
-
-        rows=[
-
-            {
-                account:party,
-                debit:total,
-                credit:0
-            },
-
-            {
-                account:"Cash",
-                debit:0,
-                credit:cash
-            },
-
-            {
-                account:"Discount Received",
-                debit:0,
-                credit:discount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? `Being amount paid to ${party} and discount received.`
-            : `${party} को राशि का भुगतान किया गया तथा छूट प्राप्त हुई।`;
-
-
-        trading=`<span class="no">✗ ${language==="en"?"No direct effect":"कोई सीधा प्रभाव नहीं"}</span>`;
-
-
-        profitLoss=language==="en"
-            ? `<span class="yes">✓ Discount Received → Credit</span><br>Indirect income`
-            : `<span class="yes">✓ Discount Received → Credit</span><br>अप्रत्यक्ष आय`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Cash ↓ ₹${money(cash)}<br>
-               ✓ ${party} Creditor ↓ ₹${money(total)}`
-            : `✓ नकद ↓ ₹${money(cash)}<br>
-               ✓ ${party} लेनदार ↓ ₹${money(total)}`;
-
-
-        assets=language==="en"
-            ? `Cash ↓ ₹${money(cash)}`
-            : `नकद ↓ ₹${money(cash)}`;
-
-
-        liabilities=language==="en"
-            ? `Creditor ↓ ₹${money(total)}`
-            : `लेनदार ↓ ₹${money(total)}`;
-
-
-        capital=language==="en"
-            ? `Increases through Discount Received income`
-            : `Discount Received आय के कारण बढ़ेगा`;
-
-
-        explanation=language==="en"
-            ? `The amount payable to ${party} was ₹${money(total)}.
-               ₹${money(cash)} was paid and ₹${money(discount)} was received as discount.
-               Therefore ${party} is debited with the full amount payable,
-               while Cash and Discount Received are credited.`
-            : `${party} को कुल ₹${money(total)} देने थे।
-               ₹${money(cash)} का भुगतान किया गया और ₹${money(discount)} की छूट प्राप्त हुई।
-               इसलिए ${party} को पूरी राशि से Debit तथा Cash और Discount Received को Credit किया गया।`;
-
+    /* =========================================================
+       5. FIXED ASSET PURCHASE / SALE
+    ========================================================= */
+    else if(has("plant","machinery","machine","furniture","building","vehicle","equipment","computer") && has("purchase","purchased","bought","acquired")){
+        let asset=has("plant","machinery","machine")?"Plant & Machinery":
+                  has("furniture")?"Furniture":has("building")?"Building":
+                  has("vehicle")?"Vehicle":has("computer")?"Computer":"Equipment";
+        const creditParty=party||"Supplier / Creditor";
+        const creditMode=has("cash","bank","cheque")?moneyAccount:creditParty;
+        d=resultData(
+            [{account:asset,debit:amount,credit:0},{account:creditMode,debit:0,credit:amount}],
+            language==="en"?`Being ${asset.toLowerCase()} purchased.`:`${asset} खरीदी गई।`,
+            `<span class="no">✗ No Trading effect</span>`,
+            `<span class="no">✗ No direct P&L effect</span>`,
+            `✓ ${asset} → Fixed Asset<br>✓ ${creditMode} ↑/↓ as applicable`,
+            `${asset} ↑ ₹${money(amount)}<br>${creditMode} ↓/Liability ↑ ₹${money(amount)}`,
+            creditMode.includes("Supplier")?"Supplier/Creditor ↑ ₹"+money(amount):"No direct change",
+            `No direct change`,
+            language==="en"?`${asset} is a capital asset, not goods purchased for resale.`
+            :`${asset} पुनर्विक्रय के लिए माल नहीं बल्कि व्यवसाय की स्थायी संपत्ति है।`
+        );
     }
 
-
-    /* =================================================
-       DRAWINGS
-    ================================================= */
-
-    else if(
-
-        text.includes("drawings") ||
-        text.includes("personal use") ||
-        text.includes("private use") ||
-        text.includes("domestic use") ||
-        text.includes("withdrawn by the proprietor") ||
-        text.includes("withdrawn by proprietor")
-
-    ){
-
-        let account=text.includes("goods")
-            ? "Purchase"
-            : "Cash";
-
-
-        rows=[
-
-            {
-                account:"Drawings",
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:account,
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? `Being ${account.toLowerCase()} withdrawn by proprietor for personal use.`
-            : `स्वामी द्वारा निजी उपयोग के लिए ${account==="Cash"?"नकद":"माल"} निकाला गया।`;
-
-
-        trading=`<span class="no">✗ ${language==="en"?"No effect":"कोई प्रभाव नहीं"}</span>`;
-
-        profitLoss=`<span class="no">✗ ${language==="en"?"No effect":"कोई प्रभाव नहीं"}</span>`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Drawings deducted from Capital<br>
-               ✓ Cash/stock decreases`
-            : `✓ आहरण पूंजी से घटाया जाएगा<br>
-               ✓ नकद/माल कम होगा`;
-
-
-        assets=language==="en"
-            ? `${account} ↓ ₹${money(amount)}`
-            : `${account} ↓ ₹${money(amount)}`;
-
-
-        liabilities=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        capital=language==="en"
-            ? `Capital ↓ ₹${money(amount)}`
-            : `पूंजी ↓ ₹${money(amount)}`;
-
-
-        explanation=language==="en"
-            ? `The proprietor has withdrawn business resources for personal,
-               domestic or private use. This is Drawings, not a business expense.
-               Drawings are deducted from the owner's capital.`
-            : `स्वामी ने व्यवसाय की राशि या माल को निजी उपयोग के लिए निकाला है।
-               इसे आहरण कहा जाता है। यह व्यवसाय का व्यय नहीं है।
-               आहरण को स्वामी की पूंजी से घटाया जाता है।`;
-
+    /* =========================================================
+       6. DEPRECIATION
+    ========================================================= */
+    else if(has("depreciation","depreciated")){
+        const asset=has("plant","machinery","machine")?"Plant & Machinery":
+                    has("building")?"Building":has("vehicle")?"Vehicle":
+                    has("computer")?"Computer":"Furniture";
+        d=resultData(
+            [{account:"Depreciation",debit:amount,credit:0},{account:"Accumulated Depreciation - "+asset,debit:0,credit:amount}],
+            language==="en"?`Being depreciation charged on ${asset.toLowerCase()}.`:`${asset} पर मूल्यह्रास लगाया गया।`,
+            `<span class="no">✗ Normally no Trading effect</span>`,
+            `✓ Depreciation → Debit ₹${money(amount)}<br>Indirect expense`,
+            `✓ ${asset} carrying value decreases ₹${money(amount)}`,
+            `${asset} ↓ ₹${money(amount)}`,
+            `No direct change`,`Capital ↓ through expense`,
+            language==="en"?"Depreciation is an expense and reduces the carrying value of the fixed asset."
+            :"मूल्यह्रास एक व्यय है और स्थायी संपत्ति की carrying value को कम करता है।"
+        );
     }
 
-
-    /* =================================================
-       PURCHASE RETURN
-    ================================================= */
-
-    else if(
-
-        text.includes("purchase return") ||
-        text.includes("returned goods to supplier") ||
-        text.includes("goods returned to supplier")
-
-    ){
-
-        let party=findParty(original)||"Creditor";
-
-
-        rows=[
-
-            {
-                account:party,
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:"Purchase Return",
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? `Being goods returned to ${party}.`
-            : `${party} को माल वापस किया गया।`;
-
-
-        trading=language==="en"
-            ? `<span class="yes">✓ Purchase Return → Credit</span>`
-            : `<span class="yes">✓ Purchase Return → Credit</span>`;
-
-
-        profitLoss=`<span class="no">✗ ${language==="en"?"No direct effect":"कोई सीधा प्रभाव नहीं"}</span>`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Creditor decreases ₹${money(amount)}`
-            : `✓ लेनदार ₹${money(amount)} कम होगा`;
-
-
-        assets=language==="en"
-            ? `No direct cash effect`
-            : `नकद पर सीधा प्रभाव नहीं`;
-
-
-        liabilities=language==="en"
-            ? `Creditor ↓ ₹${money(amount)}`
-            : `लेनदार ↓ ₹${money(amount)}`;
-
-
-        capital=language==="en"
-            ? `Indirect effect through Trading A/c`
-            : `Trading A/c के माध्यम से अप्रत्यक्ष प्रभाव`;
-
-
-        explanation=language==="en"
-            ? `Goods are returned to the supplier.
-               Purchase Return reduces net purchases and is therefore
-               credited in the Trading Account.`
-            : `माल supplier को वापस किया गया है।
-               Purchase Return कुल खरीद को कम करता है और इसलिए
-               Trading Account में Credit किया जाता है।`;
-
+    /* =========================================================
+       7. RETURNS
+    ========================================================= */
+    else if(has("purchase return","return to supplier","returned goods to supplier","goods returned to supplier")){
+        const cr=party||"Supplier / Creditor";
+        d=resultData(
+            [{account:cr,debit:amount,credit:0},{account:"Purchase Return",debit:0,credit:amount}],
+            language==="en"?`Being goods returned to ${cr}.`:`${cr} को माल वापस किया गया।`,
+            `✓ Purchase Return → Credit ₹${money(amount)}`,
+            `<span class="no">✗ No direct P&L effect</span>`,
+            `✓ Creditor decreases ₹${money(amount)}`,
+            `No direct cash effect`,`Creditor ↓ ₹${money(amount)}`,
+            `Indirect effect through Trading A/c`,
+            language==="en"?"Purchase Return reduces purchases and the amount payable to the supplier."
+            :"Purchase Return से खरीद और supplier को देय राशि दोनों कम होती हैं।"
+        );
+    }
+    else if(has("sales return","returned by customer","goods returned by customer","return from customer")){
+        const dr=party||"Customer / Debtor";
+        d=resultData(
+            [{account:"Sales Return",debit:amount,credit:0},{account:dr,debit:0,credit:amount}],
+            language==="en"?`Being goods returned by ${dr}.`:`${dr} द्वारा माल वापस किया गया।`,
+            `✓ Sales Return → Debit ₹${money(amount)}`,
+            `<span class="no">✗ No direct P&L effect</span>`,
+            `✓ Debtor decreases ₹${money(amount)}`,
+            `Debtor ↓ ₹${money(amount)}`,
+            `No direct change`,`Indirect effect through Trading A/c`,
+            language==="en"?"Sales Return reduces sales and the amount receivable from the customer."
+            :"Sales Return से बिक्री और ग्राहक से प्राप्त होने वाली राशि दोनों कम होती हैं।"
+        );
     }
 
-
-    /* =================================================
-       SALES RETURN
-    ================================================= */
-
-    else if(
-
-        text.includes("sales return") ||
-        text.includes("returned by customer") ||
-        text.includes("goods returned by customer")
-
-    ){
-
-        let party=findParty(original)||"Debtor";
-
-
-        rows=[
-
-            {
-                account:"Sales Return",
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:party,
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? `Being goods returned by ${party}.`
-            : `${party} द्वारा माल वापस किया गया।`;
-
-
-        trading=language==="en"
-            ? `<span class="yes">✓ Sales Return → Debit</span>`
-            : `<span class="yes">✓ Sales Return → Debit</span>`;
-
-
-        profitLoss=`<span class="no">✗ ${language==="en"?"No direct effect":"कोई सीधा प्रभाव नहीं"}</span>`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Debtor decreases ₹${money(amount)}`
-            : `✓ देनदार ₹${money(amount)} कम होगा`;
-
-
-        assets=language==="en"
-            ? `Debtor ↓ ₹${money(amount)}`
-            : `देनदार ↓ ₹${money(amount)}`;
-
-
-        liabilities=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        capital=language==="en"
-            ? `Indirect effect through Trading A/c`
-            : `Trading A/c के माध्यम से अप्रत्यक्ष प्रभाव`;
-
-
-        explanation=language==="en"
-            ? `Goods sold earlier have been returned by the customer.
-               Sales Return reduces net sales and is debited in Trading A/c.`
-            : `पहले बेचा गया माल ग्राहक ने वापस किया है।
-               Sales Return शुद्ध बिक्री को कम करता है और Trading A/c में Debit किया जाता है।`;
-
+    /* =========================================================
+       8. SALES WITH COSTING / COST OF GOODS SOLD
+    ========================================================= */
+    else if(has("sale","sales","sold") && has("cash","bank") && has("costing","cost price","cost","costing rs") && nums.length>=2){
+        const sale=nums[0], cost=nums[1];
+        d=resultData(
+            [{account:moneyAccount,debit:sale,credit:0},{account:"Sales",debit:0,credit:sale}],
+            language==="en"?`Being goods sold for ${moneyAccount.toLowerCase()} ₹${money(sale)}; goods cost ₹${money(cost)}.`
+            :`${moneyAccount} में ₹${money(sale)} की बिक्री हुई; माल की लागत ₹${money(cost)} थी।`,
+            `✓ Sales → Credit ₹${money(sale)}<br>✓ Cost of goods ₹${money(cost)}<br>✓ Gross Profit = ₹${money(sale-cost)}`,
+            `<span class="yes">✓ Gross Profit = ₹${money(sale-cost)}</span>`,
+            `✓ ${moneyAccount} ↑ ₹${money(sale)}<br>✓ Inventory/Stock ↓ ₹${money(cost)}<br>✓ Profit ↑ ₹${money(sale-cost)}`,
+            `${moneyAccount} ↑ ₹${money(sale)}<br>Inventory ↓ ₹${money(cost)}`,
+            `No direct change`,`Capital ↑ through gross profit`,
+            language==="en"?"The journal entry records the sale at selling price. The cost figure is used in Trading/COGS analysis, not added to the sales entry."
+            :"Journal entry में बिक्री selling price पर record होती है। Cost amount Trading/COGS में उपयोग होता है, sales entry में अलग से जोड़ना आवश्यक नहीं है।"
+        );
     }
 
+    /* =========================================================
+       9. COMPOUND GOODS PURCHASE: CASH + CREDIT
+    ========================================================= */
+    else if(has("purchase","purchased","bought") && has("cash") && has("on account","on credit","credit") && nums.length>=2){
+        const cash=nums[0], credit=nums[1], total=cash+credit;
+        d=resultData(
+            [{account:"Purchase",debit:total,credit:0},{account:"Cash",debit:0,credit:cash},{account:"Creditors",debit:0,credit:credit}],
+            language==="en"?`Being goods purchased for cash ₹${money(cash)} and on account ₹${money(credit)}.`
+            :`₹${money(cash)} नकद तथा ₹${money(credit)} उधार पर माल खरीदा गया।`,
+            `✓ Purchase → Debit ₹${money(total)}`,`<span class="no">✗ No direct effect</span>`,
+            `✓ Cash ↓ ₹${money(cash)}<br>✓ Creditors ↑ ₹${money(credit)}`,
+            `Cash ↓ ₹${money(cash)}`,`Creditors ↑ ₹${money(credit)}`,`No direct change`,
+            language==="en"?"Total purchases are debited; cash paid and credit liability are credited separately."
+            :"कुल खरीद को Debit किया जाता है; नकद भुगतान और credit liability को अलग-अलग Credit किया जाता है।"
+        );
+    }
 
-    /* =================================================
-       PURCHASE
-    ================================================= */
-else if(
-    text.includes("goods given as charity") ||
-    text.includes("goods given for charity") ||
-    text.includes("goods donated") ||
-    text.includes("goods donated to charity") ||
-    text.includes("goods given as donation") ||
-    text.includes("goods donated as charity") ||
-    text.includes("goods given away as charity")
-){
+    /* =========================================================
+       10. COMPOUND SALES: CASH + CREDIT
+    ========================================================= */
+    else if(has("sale","sales","sold") && has("cash") && has("on account","on credit","credit") && nums.length>=2){
+        const cash=nums[0], credit=nums[1], total=cash+credit;
+        const dr=party||"Debtor";
+        d=resultData(
+            [{account:"Cash",debit:cash,credit:0},{account:dr,debit:credit,credit:0},{account:"Sales",debit:0,credit:total}],
+            language==="en"?`Being goods sold for cash ₹${money(cash)} and on credit ₹${money(credit)}.`
+            :`₹${money(cash)} नकद तथा ₹${money(credit)} उधार माल बेचा गया।`,
+            `✓ Sales → Credit ₹${money(total)}`,`<span class="no">✗ No direct effect</span>`,
+            `✓ Cash ↑ ₹${money(cash)}<br>✓ ${dr} (Debtor) ↑ ₹${money(credit)}`,
+            `Cash ↑ ₹${money(cash)}<br>${dr} ↑ ₹${money(credit)}`,
+            `No direct change`,`Capital ↑ through profit`,
+            language==="en"?"Cash and credit sales are combined; Sales is credited with total sales."
+            :"नकद और उधार बिक्री को एक entry में लिया गया है और कुल Sales को Credit किया गया है।"
+        );
+    }
 
-    rows = [
-        {
-            account: "Charity",
-            debit: amount,
-            credit: 0
-        },
-        {
-            account: "Purchase",
-            debit: 0,
-            credit: amount
+    /* =========================================================
+       11. RECEIPT FROM DEBTOR + DISCOUNT ALLOWED
+    ========================================================= */
+    else if(has("received from") && has("discount allowed") && nums.length>=2){
+        const cash=nums[0], disc=nums[1], total=cash+disc, dr=party||"Debtor";
+        d=resultData(
+            [{account:"Cash",debit:cash,credit:0},{account:"Discount Allowed",debit:disc,credit:0},{account:dr,debit:0,credit:total}],
+            language==="en"?`Being amount received from ${dr} and discount allowed.`:`${dr} से राशि प्राप्त हुई तथा छूट दी गई।`,
+            `<span class="no">✗ No Trading effect</span>`,`✓ Discount Allowed → Debit ₹${money(disc)}`,
+            `✓ Cash ↑ ₹${money(cash)}<br>✓ Debtor ↓ ₹${money(total)}`,
+            `Cash ↑ ₹${money(cash)}<br>Debtor ↓ ₹${money(total)}`,
+            `No direct change`,`Capital ↓ through expense`,
+            language==="en"?`The debtor's full balance is settled by cash received plus discount allowed.`
+            :`देनदार की पूरी राशि नकद प्राप्ति और discount allowed के माध्यम से समाप्त होती है।`
+        );
+    }
+
+    /* =========================================================
+       12. PAYMENT TO CREDITOR + DISCOUNT RECEIVED
+    ========================================================= */
+    else if(has("paid to") && has("discount received") && nums.length>=2){
+        const cash=nums[0], disc=nums[1], total=cash+disc, cr=party||"Creditor";
+        d=resultData(
+            [{account:cr,debit:total,credit:0},{account:"Cash",debit:0,credit:cash},{account:"Discount Received",debit:0,credit:disc}],
+            language==="en"?`Being amount paid to ${cr} and discount received.`:`${cr} को राशि का भुगतान किया गया तथा छूट प्राप्त हुई।`,
+            `<span class="no">✗ No Trading effect</span>`,`✓ Discount Received → Credit ₹${money(disc)}`,
+            `✓ Cash ↓ ₹${money(cash)}<br>✓ Creditor ↓ ₹${money(total)}`,
+            `Cash ↓ ₹${money(cash)}`,`Creditor ↓ ₹${money(total)}`,`Capital ↑ through income`,
+            language==="en"?`The creditor's full balance is settled by cash payment plus discount received.`
+            :`लेनदार की पूरी राशि नकद भुगतान और discount received के माध्यम से समाप्त होती है।`
+        );
+    }
+
+    /* =========================================================
+       13. DRAWINGS — CASH/BANK
+    ========================================================= */
+    else if(has("drawings","personal use","private use","domestic use","withdrawn by the proprietor","withdrawn by proprietor")){
+        const acc=has("bank","cheque")?"Bank":"Cash";
+        d=resultData(
+            [{account:"Drawings",debit:amount,credit:0},{account:acc,debit:0,credit:amount}],
+            language==="en"?`Being ${acc.toLowerCase()} withdrawn by proprietor for personal use.`:`स्वामी द्वारा निजी उपयोग के लिए ${acc==="Cash"?"नकद":"बैंक से राशि"} निकाली गई।`,
+            `<span class="no">✗ No Trading effect</span>`,`<span class="no">✗ No P&L effect</span>`,
+            `✓ ${acc} ↓ ₹${money(amount)}<br>✓ Drawings deducted from Capital`,
+            `${acc} ↓ ₹${money(amount)}`,`No direct change`,`Capital ↓ ₹${money(amount)}`,
+            language==="en"?"Drawings are withdrawals by the owner, not business expenses."
+            :"Drawings स्वामी द्वारा निकासी है, व्यवसाय का खर्च नहीं।"
+        );
+    }
+
+    /* =========================================================
+       14. EXPENSES: salary, wages, rent, carriage, insurance,
+           advertising, office, repairs, bank charges, interest
+    ========================================================= */
+    else if(has("salary")){
+        const acc=has("bank","cheque")?"Bank":"Cash";
+        if(has("outstanding")){
+            d=resultData(
+                [{account:"Salary",debit:amount,credit:0},{account:"Outstanding Salary",debit:0,credit:amount}],
+                language==="en"?"Being salary outstanding.":"वेतन बकाया है।",
+                `<span class="no">✗ Normally no Trading effect</span>`,`✓ Salary → Debit ₹${money(amount)}`,
+                `✓ Outstanding Salary → Current Liability`,`No direct asset change`,`Outstanding Salary ↑ ₹${money(amount)}`,
+                `Capital ↓ through expense`,`Salary is recognised although unpaid.`
+            );
+        } else if(has("prepaid")){
+            d=resultData(
+                [{account:"Prepaid Salary",debit:amount,credit:0},{account:"Salary",debit:0,credit:amount}],
+                language==="en"?"Being prepaid salary adjusted.":"Prepaid salary का समायोजन किया गया।",
+                `<span class="no">✗ No direct Trading effect</span>`,`✓ Current-period salary only`,
+                `✓ Prepaid Salary → Current Asset`,`Prepaid Salary ↑ ₹${money(amount)}`,
+                `No direct change`,`Depends on final expense`,`Future-period salary is treated as an asset.`
+            );
+        } else {
+            d=resultData(
+                [{account:"Salary",debit:amount,credit:0},{account:acc,debit:0,credit:amount}],
+                language==="en"?"Being salary paid.":"वेतन का भुगतान किया गया।",
+                `<span class="no">✗ Normally no Trading effect</span>`,`✓ Salary → Debit ₹${money(amount)}`,
+                `✓ ${acc} ↓ ₹${money(amount)}`,`${acc} ↓ ₹${money(amount)}`,
+                `No direct change`,`Capital ↓ through expense`,`Salary is normally an indirect expense.`
+            );
         }
-    ];
+    }
+    else if(has("wages")){
+        const acc=has("bank","cheque")?"Bank":"Cash";
+        d=resultData(
+            [{account:"Wages",debit:amount,credit:0},{account:acc,debit:0,credit:amount}],
+            language==="en"?"Being wages paid.":"मजदूरी का भुगतान किया गया।",
+            `✓ Wages → Debit ₹${money(amount)}`,`<span class="no">✗ Normally no direct P&L effect</span>`,
+            `✓ ${acc} ↓ ₹${money(amount)}`,`${acc} ↓ ₹${money(amount)}`,`No direct change`,
+            `Capital ↓ through direct expense`,`Wages are normally a direct expense shown in Trading A/c.`
+        );
+    }
+    else if(has("carriage inward","carriage on purchases","inward carriage")){
+        const acc=has("bank","cheque")?"Bank":"Cash";
+        d=resultData(
+            [{account:"Carriage Inward",debit:amount,credit:0},{account:acc,debit:0,credit:amount}],
+            language==="en"?"Being carriage inward paid.":"आवक ढुलाई का भुगतान किया गया।",
+            `✓ Carriage Inward → Debit ₹${money(amount)}`,`<span class="no">✗ No direct P&L effect</span>`,
+            `✓ ${acc} ↓ ₹${money(amount)}`,`${acc} ↓ ₹${money(amount)}`,`No direct change`,
+            `Capital ↓ through Trading profit`,`Carriage inward is a direct cost of bringing goods to the business.`
+        );
+    }
+    else if(has("carriage outward","delivery expense","freight outward")){
+        const acc=has("bank","cheque")?"Bank":"Cash";
+        d=resultData(
+            [{account:"Carriage Outward",debit:amount,credit:0},{account:acc,debit:0,credit:amount}],
+            language==="en"?"Being carriage outward paid.":"बाह्य ढुलाई का भुगतान किया गया।",
+            `<span class="no">✗ No Trading effect</span>`,`✓ Carriage Outward → Debit ₹${money(amount)}`,
+            `✓ ${acc} ↓ ₹${money(amount)}`,`${acc} ↓ ₹${money(amount)}`,`No direct change`,
+            `Capital ↓ through expense`,`Carriage outward is a selling/distribution expense.`
+        );
+    }
+    else if(has("rent")){
+        const acc=has("bank","cheque")?"Bank":"Cash";
+        d=resultData(
+            [{account:"Rent",debit:amount,credit:0},{account:acc,debit:0,credit:amount}],
+            language==="en"?"Being rent paid.":"किराए का भुगतान किया गया।",
+            `<span class="no">✗ No Trading effect</span>`,`✓ Rent → Debit ₹${money(amount)}`,
+            `✓ ${acc} ↓ ₹${money(amount)}`,`${acc} ↓ ₹${money(amount)}`,`No direct change`,
+            `Capital ↓ through expense`,`Rent is normally an indirect expense.`
+        );
+    }
+    else if(has("interest paid","interest on loan paid")){
+        const acc=has("bank","cheque")?"Bank":"Cash";
+        d=resultData(
+            [{account:"Interest",debit:amount,credit:0},{account:acc,debit:0,credit:amount}],
+            language==="en"?"Being interest paid.":"ब्याज का भुगतान किया गया।",
+            `<span class="no">✗ No Trading effect</span>`,`✓ Interest → Debit ₹${money(amount)}`,
+            `✓ ${acc} ↓ ₹${money(amount)}`,`${acc} ↓ ₹${money(amount)}`,`No direct change`,
+            `Capital ↓ through expense`,`Interest is a finance expense.`
+        );
+    }
+    else if(has("bank charges","bank charge")){
+        d=resultData(
+            [{account:"Bank Charges",debit:amount,credit:0},{account:"Bank",debit:0,credit:amount}],
+            language==="en"?"Being bank charges debited by bank.":"बैंक द्वारा बैंक शुल्क काटा गया।",
+            `<span class="no">✗ No Trading effect</span>`,`✓ Bank Charges → Debit ₹${money(amount)}`,
+            `✓ Bank ↓ ₹${money(amount)}`,`Bank ↓ ₹${money(amount)}`,`No direct change`,
+            `Capital ↓ through expense`,`Bank charges are an indirect expense.`
+        );
+    }
+    else if(has("advertising","advertisement")){
+        const acc=has("bank","cheque")?"Bank":"Cash";
+        d=resultData(
+            [{account:"Advertisement",debit:amount,credit:0},{account:acc,debit:0,credit:amount}],
+            language==="en"?"Being advertisement expense paid.":"विज्ञापन व्यय का भुगतान किया गया।",
+            `<span class="no">✗ No Trading effect</span>`,`✓ Advertisement → Debit ₹${money(amount)}`,
+            `✓ ${acc} ↓ ₹${money(amount)}`,`${acc} ↓ ₹${money(amount)}`,`No direct change`,
+            `Capital ↓ through expense`,`Advertisement is normally an indirect expense.`
+        );
+    }
+    else if(has("repairs","repair")){
+        const acc=has("bank","cheque")?"Bank":"Cash";
+        d=resultData(
+            [{account:"Repairs",debit:amount,credit:0},{account:acc,debit:0,credit:amount}],
+            language==="en"?"Being repairs paid.":"मरम्मत का भुगतान किया गया।",
+            `<span class="no">✗ No Trading effect</span>`,`✓ Repairs → Debit ₹${money(amount)}`,
+            `✓ ${acc} ↓ ₹${money(amount)}`,`${acc} ↓ ₹${money(amount)}`,`No direct change`,
+            `Capital ↓ through expense`,`Routine repairs are normally revenue expenses.`
+        );
+    }
+    else if(has("office expense","office expenses","stationery","printing")){
+        const acc=has("bank","cheque")?"Bank":"Cash";
+        const name=has("stationery")?"Stationery":has("printing")?"Printing":"Office Expense";
+        d=resultData(
+            [{account:name,debit:amount,credit:0},{account:acc,debit:0,credit:amount}],
+            language==="en"?`Being ${name.toLowerCase()} paid.`:`${name} का भुगतान किया गया।`,
+            `<span class="no">✗ No Trading effect</span>`,`✓ ${name} → Debit ₹${money(amount)}`,
+            `✓ ${acc} ↓ ₹${money(amount)}`,`${acc} ↓ ₹${money(amount)}`,`No direct change`,
+            `Capital ↓ through expense`,`This is normally an indirect operating expense.`
+        );
+    }
 
-    narration = language === "en"
-        ? "Being goods given as charity."
-        : "माल को दान के रूप में दिया गया।";
+    /* =========================================================
+       15. INCOME
+    ========================================================= */
+    else if(has("commission received","commission income")){
+        const acc=has("bank","cheque")?"Bank":"Cash";
+        d=resultData(
+            [{account:acc,debit:amount,credit:0},{account:"Commission Received",debit:0,credit:amount}],
+            language==="en"?"Being commission received.":"कमीशन प्राप्त हुआ।",
+            `<span class="no">✗ No Trading effect</span>`,`✓ Commission Received → Credit ₹${money(amount)}`,
+            `✓ ${acc} ↑ ₹${money(amount)}`,`${acc} ↑ ₹${money(amount)}`,`No direct change`,
+            `Capital ↑ through income`,`Commission received is normally an indirect income.`
+        );
+    }
+    else if(has("interest received")){
+        const acc=has("bank","cheque")?"Bank":"Cash";
+        d=resultData(
+            [{account:acc,debit:amount,credit:0},{account:"Interest Received",debit:0,credit:amount}],
+            language==="en"?"Being interest received.":"ब्याज प्राप्त हुआ।",
+            `<span class="no">✗ No Trading effect</span>`,`✓ Interest Received → Credit ₹${money(amount)}`,
+            `✓ ${acc} ↑ ₹${money(amount)}`,`${acc} ↑ ₹${money(amount)}`,`No direct change`,
+            `Capital ↑ through income`,`Interest received is income.`
+        );
+    }
 
-    trading = language === "en"
-        ? `<span class="yes">✓ Purchase reduced by ₹${money(amount)}</span><br>
-           Goods given as charity are deducted from purchases.`
-        : `<span class="yes">✓ Purchase ₹${money(amount)} से कम होगा</span><br>
-           दान में दिए गए माल को खरीद से घटाया जाता है।`;
+    /* =========================================================
+       16. LOANS
+    ========================================================= */
+    else if(has("loan received","loan taken","loan obtained","loan borrowed")){
+        const acc=has("bank","cheque")?"Bank":"Cash";
+        d=resultData(
+            [{account:acc,debit:amount,credit:0},{account:"Loan",debit:0,credit:amount}],
+            language==="en"?"Being loan received.":"ऋण प्राप्त हुआ।",
+            `<span class="no">✗ No Trading effect</span>`,`<span class="no">✗ No direct P&L effect</span>`,
+            `✓ ${acc} ↑ ₹${money(amount)}<br>✓ Loan liability ↑ ₹${money(amount)}`,
+            `${acc} ↑ ₹${money(amount)}`,`Loan ↑ ₹${money(amount)}`,`No direct change`,
+            language==="en"?"Loan creates cash/bank asset and an equal liability."
+            :"ऋण से Cash/Bank बढ़ता है और उतनी ही liability बनती है।"
+        );
+    }
+    else if(has("loan repaid","loan paid","repaid loan","repayment of loan")){
+        const acc=has("bank","cheque")?"Bank":"Cash";
+        d=resultData(
+            [{account:"Loan",debit:amount,credit:0},{account:acc,debit:0,credit:amount}],
+            language==="en"?"Being loan repaid.":"ऋण चुकाया गया।",
+            `<span class="no">✗ No Trading effect</span>`,`<span class="no">✗ Principal repayment is not an expense</span>`,
+            `✓ Loan liability ↓ ₹${money(amount)}<br>✓ ${acc} ↓ ₹${money(amount)}`,
+            `${acc} ↓ ₹${money(amount)}`,`Loan ↓ ₹${money(amount)}`,`No direct change`,
+            language==="en"?"Repayment of principal reduces the liability and asset; it is not an expense."
+            :"मूल ऋण चुकाने से liability और Cash/Bank दोनों कम होते हैं; यह expense नहीं है।"
+        );
+    }
 
-    profitLoss = language === "en"
-        ? `<span class="yes">✓ Charity → Debit ₹${money(amount)}</span><br>
-           Charity is an indirect expense.`
-        : `<span class="yes">✓ Charity → Debit ₹${money(amount)}</span><br>
-           Charity एक अप्रत्यक्ष व्यय है।`;
+    /* =========================================================
+       17. OUTSTANDING / PREPAID / ACCRUED / ADVANCE
+    ========================================================= */
+    else if(has("outstanding") && (has("expense","salary","rent","wages","interest","commission"))){
+        let exp=has("salary")?"Salary":has("rent")?"Rent":has("wages")?"Wages":
+                has("interest")?"Interest":has("commission")?"Commission":"Expense";
+        d=resultData(
+            [{account:exp,debit:amount,credit:0},{account:"Outstanding "+exp,debit:0,credit:amount}],
+            language==="en"?`Being ${exp.toLowerCase()} outstanding.`:`${exp} बकाया है।`,
+            exp==="Wages"?`✓ ${exp} → Trading Debit`:`<span class="no">✗ No direct Trading effect</span>`,
+            `✓ ${exp} recognised as expense`,
+            `✓ Outstanding ${exp} → Current Liability`,`No direct asset increase`,
+            `Outstanding ${exp} ↑ ₹${money(amount)}`,`Capital ↓ through expense`,
+            language==="en"?"The expense is recognised even though it has not yet been paid."
+            :"भुगतान न होने पर भी incurred expense को मान्यता दी जाती है।"
+        );
+    }
+    else if(has("prepaid")){
+        let exp=has("rent")?"Rent":has("salary")?"Salary":has("insurance")?"Insurance":"Expense";
+        d=resultData(
+            [{account:"Prepaid "+exp,debit:amount,credit:0},{account:exp,debit:0,credit:amount}],
+            language==="en"?`Being prepaid ${exp.toLowerCase()} adjusted.`:`Prepaid ${exp} का समायोजन किया गया।`,
+            `<span class="no">✗ Depends on nature of expense</span>`,
+            `✓ Only current-period expense is charged`,
+            `✓ Prepaid ${exp} → Current Asset`,`Prepaid ${exp} ↑ ₹${money(amount)}`,
+            `No direct change`,`Depends on final expense`,
+            language==="en"?"The future-period portion is treated as a current asset."
+            :"भविष्य की अवधि की राशि को Current Asset माना जाता है।"
+        );
+    }
+    else if(has("accrued income","income accrued")){
+        d=resultData(
+            [{account:"Accrued Income",debit:amount,credit:0},{account:"Income",debit:0,credit:amount}],
+            language==="en"?"Being income accrued but not yet received.":"आय अर्जित हुई लेकिन अभी प्राप्त नहीं हुई।",
+            `<span class="no">✗ Normally no Trading effect</span>`,`✓ Income → Credit ₹${money(amount)}`,
+            `✓ Accrued Income → Current Asset`,`Accrued Income ↑ ₹${money(amount)}`,
+            `No direct change`,`Capital ↑ through income`,
+            language==="en"?"Income earned but not received is recognised with a receivable asset."
+            :"अर्जित लेकिन अप्राप्त आय को receivable asset के साथ मान्यता दी जाती है।"
+        );
+    }
+    else if(has("unearned income","income received in advance","income received advance")){
+        const acc=has("bank","cheque")?"Bank":"Cash";
+        d=resultData(
+            [{account:acc,debit:amount,credit:0},{account:"Unearned Income",debit:0,credit:amount}],
+            language==="en"?"Being income received in advance.":"आय अग्रिम रूप से प्राप्त हुई।",
+            `<span class="no">✗ Not current Trading income</span>`,`<span class="no">✗ Not current income</span>`,
+            `✓ ${acc} ↑ ₹${money(amount)}<br>✓ Unearned Income → Current Liability`,
+            `${acc} ↑ ₹${money(amount)}`,`Unearned Income ↑ ₹${money(amount)}`,
+            `No current income effect`,`Advance receipt creates a liability until income is earned.`
+        );
+    }
 
-    balanceSheet = language === "en"
-        ? `✓ Goods/Stock decreases ₹${money(amount)}<br>
-           ✓ No cash effect`
-        : `✓ माल/स्टॉक ₹${money(amount)} कम होगा<br>
-           ✓ नकद पर कोई प्रभाव नहीं`;
+    /* =========================================================
+       18. BANK/CASH TRANSFERS
+    ========================================================= */
+    else if(has("cash deposited into bank","cash deposited in bank","cash deposited with bank")){
+        d=resultData(
+            [{account:"Bank",debit:amount,credit:0},{account:"Cash",debit:0,credit:amount}],
+            language==="en"?"Being cash deposited into bank.":"नकद बैंक में जमा किया गया।",
+            `<span class="no">✗ No Trading effect</span>`,`<span class="no">✗ No P&L effect</span>`,
+            `✓ Cash ↓ ₹${money(amount)}<br>✓ Bank ↑ ₹${money(amount)}`,
+            `Cash ↓ ₹${money(amount)}; Bank ↑ ₹${money(amount)}`,
+            `No change`,`No change`,`This is only a transfer between two assets.`
+        );
+    }
+    else if(has("cash withdrawn from bank","cash withdrawn from the bank")){
+        d=resultData(
+            [{account:"Cash",debit:amount,credit:0},{account:"Bank",debit:0,credit:amount}],
+            language==="en"?"Being cash withdrawn from bank for office use.":"कार्यालय उपयोग के लिए बैंक से नकद निकाला गया।",
+            `<span class="no">✗ No Trading effect</span>`,`<span class="no">✗ No P&L effect</span>`,
+            `✓ Cash ↑ ₹${money(amount)}<br>✓ Bank ↓ ₹${money(amount)}`,
+            `Cash ↑ ₹${money(amount)}; Bank ↓ ₹${money(amount)}`,
+            `No change`,`No change`,`This is a transfer between Cash and Bank.`
+        );
+    }
 
-    assets = language === "en"
-        ? `Goods/Stock ↓ ₹${money(amount)}`
-        : `माल/स्टॉक ↓ ₹${money(amount)}`;
+    /* =========================================================
+       19. BAD DEBTS / RECOVERY
+    ========================================================= */
+    else if(has("bad debt","bad debts")){
+        const dr=party||"Debtor";
+        d=resultData(
+            [{account:"Bad Debts",debit:amount,credit:0},{account:dr,debit:0,credit:amount}],
+            language==="en"?`Being amount due from ${dr} written off as bad debt.`:`${dr} से प्राप्त होने वाली राशि bad debt के रूप में लिखी गई।`,
+            `<span class="no">✗ No Trading effect</span>`,`✓ Bad Debts → Debit ₹${money(amount)}`,
+            `✓ Debtor ↓ ₹${money(amount)}`,`Debtor ↓ ₹${money(amount)}`,
+            `No direct change`,`Capital ↓ through expense`,`Bad debt is an expense and reduces the debtor balance.`
+        );
+    }
+    else if(has("bad debts recovered","bad debt recovered")){
+        const acc=has("bank","cheque")?"Bank":"Cash";
+        d=resultData(
+            [{account:acc,debit:amount,credit:0},{account:"Bad Debts Recovered",debit:0,credit:amount}],
+            language==="en"?"Being bad debts recovered.":"Bad debts की राशि पुनः प्राप्त हुई।",
+            `<span class="no">✗ No Trading effect</span>`,`✓ Bad Debts Recovered → Credit ₹${money(amount)}`,
+            `✓ ${acc} ↑ ₹${money(amount)}`,`${acc} ↑ ₹${money(amount)}`,
+            `No direct change`,`Capital ↑ through income`,`Recovery of a previously written-off debt is income.`
+        );
+    }
 
-    liabilities = language === "en"
-        ? `No direct change`
-        : `कोई सीधा परिवर्तन नहीं`;
-
-    capital = language === "en"
-        ? `Decreases through Charity expense`
-        : `Charity व्यय के कारण पूंजी कम होगी`;
-
-    explanation = language === "en"
-        ? `Goods have been taken out of the business and given as charity.
-           Since no cash has been paid, Cash A/c is not involved.
-           Charity is an indirect expense, so Charity A/c is debited.
-           Purchase A/c is credited because the goods have been withdrawn
-           from the goods available for trading.`
-        : `व्यवसाय का माल दान के रूप में बाहर दिया गया है।
-           इसमें नकद भुगतान नहीं हुआ, इसलिए Cash A/c शामिल नहीं है।
-           Charity एक अप्रत्यक्ष व्यय है, इसलिए Charity A/c को Debit किया जाता है।
-           माल trading के लिए उपलब्ध नहीं रहा, इसलिए Purchase A/c को Credit किया जाता है.`;
-}
-    else if(
-
-        text.includes("purchase") ||
-        text.includes("purchased") ||
-        text.includes("bought")
-
-    ){
-
-        let party=findParty(original);
-
-
-        if(text.includes("cash")){
-
-            rows=[
-
-                {
-                    account:"Purchase",
-                    debit:amount,
-                    credit:0
-                },
-
-                {
-                    account:"Cash",
-                    debit:0,
-                    credit:amount
-                }
-
-            ];
-
-
-            narration=language==="en"
-                ? "Being goods purchased for cash."
-                : "नकद में माल खरीदा गया।";
-
-
-            balanceSheet=language==="en"
-                ? `✓ Cash decreases ₹${money(amount)}`
-                : `✓ नकद ₹${money(amount)} कम होगा`;
-
-
-            assets=language==="en"
-                ? `Cash ↓ ₹${money(amount)}`
-                : `नकद ↓ ₹${money(amount)}`;
-
-
-            liabilities=language==="en"
-                ? `No direct change`
-                : `कोई सीधा परिवर्तन नहीं`;
-
-
-            capital=language==="en"
-                ? `Indirect effect through Trading A/c`
-                : `Trading A/c के माध्यम से अप्रत्यक्ष प्रभाव`;
-
+    /* =========================================================
+       20. NORMAL PURCHASE — LAST among purchase rules
+    ========================================================= */
+    else if(has("purchase","purchased","bought")){
+        const p=party||"Creditor";
+        if(isCash){
+            d=resultData(
+                [{account:"Purchase",debit:amount,credit:0},{account:"Cash",debit:0,credit:amount}],
+                language==="en"?"Being goods purchased for cash.":"नकद में माल खरीदा गया।",
+                `✓ Purchase → Debit ₹${money(amount)}`,`<span class="no">✗ No direct P&L effect</span>`,
+                `✓ Cash ↓ ₹${money(amount)}`,`Cash ↓ ₹${money(amount)}`,
+                `No direct change`,`Indirect effect through Trading A/c`,
+                language==="en"?"Goods for resale are trading purchases, so Purchase is debited."
+                :"पुनः बिक्री के लिए खरीदा गया माल trading purchase है, इसलिए Purchase Debit होता है।"
+            );
+        } else {
+            d=resultData(
+                [{account:"Purchase",debit:amount,credit:0},{account:p,debit:0,credit:amount}],
+                language==="en"?`Being goods purchased on credit from ${p}.`:`${p} से उधार माल खरीदा गया।`,
+                `✓ Purchase → Debit ₹${money(amount)}`,`<span class="no">✗ No direct P&L effect</span>`,
+                `✓ ${p} → Current Liability`,`No direct cash change`,
+                `${p} ↑ ₹${money(amount)}`,`Indirect effect through Trading A/c`,
+                language==="en"?"Credit purchase creates a supplier liability."
+                :"उधार खरीद से supplier/creditor की liability बनती है।"
+            );
         }
+    }
 
-        else{
-
-            let creditor=party||"Creditor";
-
-
-            rows=[
-
-                {
-                    account:"Purchase",
-                    debit:amount,
-                    credit:0
-                },
-
-                {
-                    account:creditor,
-                    debit:0,
-                    credit:amount
-                }
-
-            ];
-
-
-            narration=language==="en"
-                ? `Being goods purchased on credit from ${creditor}.`
-                : `${creditor} से उधार माल खरीदा गया।`;
-
-
-            balanceSheet=language==="en"
-                ? `✓ ${creditor} → Current Liability`
-                : `✓ ${creditor} → चालू दायित्व`;
-
-
-            assets=language==="en"
-                ? `No direct cash change`
-                : `नकद में सीधा परिवर्तन नहीं`;
-
-
-            liabilities=language==="en"
-                ? `${creditor} ↑ ₹${money(amount)}`
-                : `${creditor} ↑ ₹${money(amount)}`;
-
-
-            capital=language==="en"
-                ? `Indirect effect through Trading A/c`
-                : `Trading A/c के माध्यम से अप्रत्यक्ष प्रभाव`;
-
+    /* =========================================================
+       21. NORMAL SALES — LAST
+    ========================================================= */
+    else if(has("sale","sales","sold")){
+        const dr=party||"Debtor";
+        if(isCash){
+            d=resultData(
+                [{account:"Cash",debit:amount,credit:0},{account:"Sales",debit:0,credit:amount}],
+                language==="en"?"Being goods sold for cash.":"नकद में माल बेचा गया।",
+                `✓ Sales → Credit ₹${money(amount)}`,`<span class="no">✗ No direct P&L effect</span>`,
+                `✓ Cash ↑ ₹${money(amount)}`,`Cash ↑ ₹${money(amount)}`,
+                `No direct change`,`Capital ↑ through Trading profit`,
+                language==="en"?"Cash is received from the sale and Sales is credited."
+                :"बिक्री से नकद प्राप्त हुआ और Sales A/c को Credit किया गया।"
+            );
+        } else {
+            d=resultData(
+                [{account:dr,debit:amount,credit:0},{account:"Sales",debit:0,credit:amount}],
+                language==="en"?`Being goods sold on credit to ${dr}.`:`${dr} को उधार माल बेचा गया।`,
+                `✓ Sales → Credit ₹${money(amount)}`,`<span class="no">✗ No direct P&L effect</span>`,
+                `✓ ${dr} (Debtor) ↑ ₹${money(amount)}`,`${dr} ↑ ₹${money(amount)}`,
+                `No direct change`,`Capital ↑ through Trading profit`,
+                language==="en"?"Credit sale creates a debtor/receivable."
+                :"उधार बिक्री से Debtor/Receivable बनता है।"
+            );
         }
-
-
-        trading=language==="en"
-            ? `<span class="yes">✓ Purchase → Debit ₹${money(amount)}</span><br>
-               Direct cost of goods`
-            : `<span class="yes">✓ Purchase → Debit ₹${money(amount)}</span><br>
-               माल की प्रत्यक्ष लागत`;
-
-
-        profitLoss=`<span class="no">✗ ${language==="en"?"No direct effect":"कोई सीधा प्रभाव नहीं"}</span>`;
-
-
-        explanation=language==="en"
-            ? `Goods purchased for resale are a direct cost.
-               Therefore Purchase A/c is debited and transferred
-               to Trading A/c.`
-            : `पुनः बिक्री के लिए खरीदा गया माल प्रत्यक्ष लागत है।
-               इसलिए Purchase A/c को Debit करके Trading A/c में स्थानांतरित किया जाता है।`;
-
     }
 
-
-    /* =================================================
-       SALES
-    ================================================= */
-
-    else if(
-
-        text.includes("sale") ||
-        text.includes("sold")
-
-    ){
-
-        let party=findParty(original);
-
-
-        if(text.includes("cash")){
-
-            rows=[
-
-                {
-                    account:"Cash",
-                    debit:amount,
-                    credit:0
-                },
-
-                {
-                    account:"Sales",
-                    debit:0,
-                    credit:amount
-                }
-
-            ];
-
-
-            narration=language==="en"
-                ? "Being goods sold for cash."
-                : "नकद में माल बेचा गया।";
-
-
-            assets=language==="en"
-                ? `Cash ↑ ₹${money(amount)}`
-                : `नकद ↑ ₹${money(amount)}`;
-
-        }
-
-        else{
-
-            let debtor=party||"Debtor";
-
-
-            rows=[
-
-                {
-                    account:debtor,
-                    debit:amount,
-                    credit:0
-                },
-
-                {
-                    account:"Sales",
-                    debit:0,
-                    credit:amount
-                }
-
-            ];
-
-
-            narration=language==="en"
-                ? `Being goods sold on credit to ${debtor}.`
-                : `${debtor} को उधार माल बेचा गया।`;
-
-
-            assets=language==="en"
-                ? `${debtor} (Debtor) ↑ ₹${money(amount)}`
-                : `${debtor} (देनदार) ↑ ₹${money(amount)}`;
-
-        }
-
-
-        trading=language==="en"
-            ? `<span class="yes">✓ Sales → Credit ₹${money(amount)}</span><br>
-               Sales are shown on the credit side of Trading A/c.`
-            : `<span class="yes">✓ Sales → Credit ₹${money(amount)}</span><br>
-               बिक्री Trading A/c के Credit पक्ष में दिखाई जाती है।`;
-
-
-        profitLoss=`<span class="no">✗ ${language==="en"?"No direct effect":"कोई सीधा प्रभाव नहीं"}</span>`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Asset increases through cash/debtor`
-            : `✓ नकद/देनदार के रूप में संपत्ति बढ़ती है`;
-
-
-        liabilities=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        capital=language==="en"
-            ? `Sales affect profit through Trading A/c`
-            : `बिक्री Trading A/c के माध्यम से लाभ को प्रभावित करती है`;
-
-
-        explanation=language==="en"
-            ? `Sales are revenue from trading activities.
-               Sales A/c is credited and transferred to Trading A/c.`
-            : `बिक्री व्यापारिक गतिविधि से प्राप्त आय है।
-               Sales A/c को Credit करके Trading A/c में स्थानांतरित किया जाता है।`;
-
-    }
-
-
-    /* =================================================
-       SALARY
-    ================================================= */
-
-    else if(text.includes("salary")){
-
-        let bank=text.includes("bank");
-
-
-        if(text.includes("outstanding")){
-
-            rows=[
-
-                {
-                    account:"Salary",
-                    debit:amount,
-                    credit:0
-                },
-
-                {
-                    account:"Outstanding Salary",
-                    debit:0,
-                    credit:amount
-                }
-
-            ];
-
-
-            narration=language==="en"
-                ? "Being salary outstanding."
-                : "वेतन बकाया है।";
-
-
-            balanceSheet=language==="en"
-                ? `✓ Outstanding Salary → Current Liability`
-                : `✓ बकाया वेतन → चालू दायित्व`;
-
-            liabilities=language==="en"
-                ? `Outstanding Salary ↑ ₹${money(amount)}`
-                : `बकाया वेतन ↑ ₹${money(amount)}`;
-
-        }
-
-        else{
-
-            rows=[
-
-                {
-                    account:"Salary",
-                    debit:amount,
-                    credit:0
-                },
-
-                {
-                    account:bank?"Bank":"Cash",
-                    debit:0,
-                    credit:amount
-                }
-
-            ];
-
-
-            narration=language==="en"
-                ? "Being salary paid."
-                : "वेतन का भुगतान किया गया।";
-
-
-            balanceSheet=language==="en"
-                ? `✓ ${bank?"Bank":"Cash"} decreases ₹${money(amount)}`
-                : `✓ ${bank?"Bank":"नकद"} ₹${money(amount)} कम होगा`;
-
-            assets=language==="en"
-                ? `${bank?"Bank":"Cash"} ↓ ₹${money(amount)}`
-                : `${bank?"Bank":"नकद"} ↓ ₹${money(amount)}`;
-
-        }
-
-
-        trading=`<span class="no">✗ ${language==="en"?"Normally no":"सामान्यतः नहीं"}</span>`;
-
-
-        profitLoss=language==="en"
-            ? `<span class="yes">✓ Salary → Debit</span><br>
-               Indirect expense`
-            : `<span class="yes">✓ Salary → Debit</span><br>
-               अप्रत्यक्ष व्यय`;
-
-
-        capital=language==="en"
-            ? `Decreases through expense`
-            : `व्यय के कारण कम होगा`;
-
-
-        explanation=language==="en"
-            ? `Salary is normally an indirect expense.
-               Therefore it is charged to the Profit & Loss Account.`
-            : `वेतन सामान्यतः अप्रत्यक्ष व्यय है।
-               इसलिए इसे Profit & Loss Account में Debit किया जाता है।`;
-
-    }
-
-
-    /* =================================================
-       WAGES
-    ================================================= */
-
-    else if(text.includes("wages")){
-
-        rows=[
-
-            {
-                account:"Wages",
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:text.includes("bank")?"Bank":"Cash",
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? "Being wages paid."
-            : "मजदूरी का भुगतान किया गया।";
-
-
-        trading=language==="en"
-            ? `<span class="yes">✓ Wages → Debit ₹${money(amount)}</span><br>
-               Direct expense`
-            : `<span class="yes">✓ Wages → Debit ₹${money(amount)}</span><br>
-               प्रत्यक्ष व्यय`;
-
-
-        profitLoss=`<span class="no">✗ ${language==="en"?"Normally no direct effect":"सामान्यतः कोई सीधा प्रभाव नहीं"}</span>`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Cash/Bank decreases`
-            : `✓ नकद/बैंक कम होगा`;
-
-
-        assets=language==="en"
-            ? `Cash/Bank ↓ ₹${money(amount)}`
-            : `नकद/बैंक ↓ ₹${money(amount)}`;
-
-
-        liabilities=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        capital=language==="en"
-            ? `Indirectly reduces profit`
-            : `अप्रत्यक्ष रूप से लाभ कम होगा`;
-
-
-        explanation=language==="en"
-            ? `Wages directly relate to production or trading.
-               Therefore they are treated as a direct expense
-               and shown in Trading A/c.`
-            : `मजदूरी सीधे उत्पादन या व्यापार से संबंधित होती है।
-               इसलिए इसे प्रत्यक्ष व्यय मानकर Trading A/c में दिखाया जाता है।`;
-
-    }
-
-
-    /* =================================================
-       RENT
-    ================================================= */
-
-    else if(text.includes("rent")){
-
-        rows=[
-
-            {
-                account:"Rent",
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:text.includes("bank")?"Bank":"Cash",
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? "Being rent paid."
-            : "किराए का भुगतान किया गया।";
-
-
-        trading=`<span class="no">✗ ${language==="en"?"No":"नहीं"}</span>`;
-
-
-        profitLoss=language==="en"
-            ? `<span class="yes">✓ Rent → Debit</span><br>Indirect expense`
-            : `<span class="yes">✓ Rent → Debit</span><br>अप्रत्यक्ष व्यय`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Cash/Bank decreases`
-            : `✓ नकद/बैंक कम होगा`;
-
-
-        assets=language==="en"
-            ? `Cash/Bank ↓ ₹${money(amount)}`
-            : `नकद/बैंक ↓ ₹${money(amount)}`;
-
-
-        liabilities=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        capital=language==="en"
-            ? `Decreases through expense`
-            : `व्यय के कारण कम होगा`;
-
-
-        explanation=language==="en"
-            ? `Rent is normally an indirect expense.
-               It is therefore charged to Profit & Loss Account.`
-            : `किराया सामान्यतः अप्रत्यक्ष व्यय है।
-               इसलिए इसे Profit & Loss Account में Debit किया जाता है।`;
-
-    }
-
-
-    /* =================================================
-       COMMISSION RECEIVED
-    ================================================= */
-
-    else if(
-
-        text.includes("commission received") ||
-        text.includes("commission income")
-
-    ){
-
-        rows=[
-
-            {
-                account:text.includes("bank")?"Bank":"Cash",
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:"Commission Received",
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? "Being commission received."
-            : "कमीशन प्राप्त हुआ।";
-
-
-        trading=`<span class="no">✗ ${language==="en"?"No":"नहीं"}</span>`;
-
-
-        profitLoss=language==="en"
-            ? `<span class="yes">✓ Commission Received → Credit</span><br>Indirect income`
-            : `<span class="yes">✓ Commission Received → Credit</span><br>अप्रत्यक्ष आय`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Cash/Bank increases`
-            : `✓ नकद/बैंक बढ़ेगा`;
-
-
-        assets=language==="en"
-            ? `Cash/Bank ↑ ₹${money(amount)}`
-            : `नकद/बैंक ↑ ₹${money(amount)}`;
-
-
-        liabilities=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        capital=language==="en"
-            ? `Increases through income`
-            : `आय के कारण बढ़ेगा`;
-
-
-        explanation=language==="en"
-            ? `Commission received is normally an indirect income.
-               It is credited to Profit & Loss Account.`
-            : `प्राप्त कमीशन सामान्यतः अप्रत्यक्ष आय है।
-               इसे Profit & Loss Account में Credit किया जाता है।`;
-
-    }
-
-
-    /* =================================================
-       COMMISSION PAID
-    ================================================= */
-
-    else if(text.includes("commission paid")){
-
-        rows=[
-
-            {
-                account:"Commission",
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:text.includes("bank")?"Bank":"Cash",
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? "Being commission paid."
-            : "कमीशन का भुगतान किया गया।";
-
-
-        trading=`<span class="no">✗ ${language==="en"?"No":"नहीं"}</span>`;
-
-
-        profitLoss=language==="en"
-            ? `<span class="yes">✓ Commission → Debit</span><br>Indirect expense`
-            : `<span class="yes">✓ Commission → Debit</span><br>अप्रत्यक्ष व्यय`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Cash/Bank decreases`
-            : `✓ नकद/बैंक कम होगा`;
-
-
-        assets=language==="en"
-            ? `Cash/Bank ↓ ₹${money(amount)}`
-            : `नकद/बैंक ↓ ₹${money(amount)}`;
-
-
-        capital=language==="en"
-            ? `Decreases through expense`
-            : `व्यय के कारण कम होगा`;
-
-
-        explanation=language==="en"
-            ? `Commission paid is normally an indirect expense.
-               It is debited to Profit & Loss Account.`
-            : `भुगतान किया गया कमीशन सामान्यतः अप्रत्यक्ष व्यय है।
-               इसे Profit & Loss Account में Debit किया जाता है।`;
-
-    }
-
-
-    /* =================================================
-       FURNITURE
-    ================================================= */
-
-    else if(text.includes("furniture")){
-
-        rows=[
-
-            {
-                account:"Furniture",
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:text.includes("bank")?"Bank":"Cash",
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? "Being furniture purchased."
-            : "फर्नीचर खरीदा गया।";
-
-
-        trading=`<span class="no">✗ ${language==="en"?"No effect":"कोई प्रभाव नहीं"}</span>`;
-
-
-        profitLoss=`<span class="no">✗ ${language==="en"?"No direct effect":"कोई सीधा प्रभाव नहीं"}</span>`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Furniture → Fixed Asset<br>
-               ✓ Cash/Bank decreases`
-            : `✓ फर्नीचर → स्थायी संपत्ति<br>
-               ✓ नकद/बैंक कम होगा`;
-
-
-        assets=language==="en"
-            ? `Furniture ↑ ₹${money(amount)}<br>Cash/Bank ↓ ₹${money(amount)}`
-            : `फर्नीचर ↑ ₹${money(amount)}<br>नकद/बैंक ↓ ₹${money(amount)}`;
-
-
-        liabilities=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        capital=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        explanation=language==="en"
-            ? `Furniture is a fixed asset used by the business.
-               It is not a revenue expense and is therefore shown
-               in the Balance Sheet.`
-            : `फर्नीचर व्यवसाय में उपयोग होने वाली स्थायी संपत्ति है।
-               यह revenue expense नहीं है और इसलिए Balance Sheet में दिखाया जाता है।`;
-
-    }
-
-
-    /* =================================================
-       PLANT & MACHINERY
-    ================================================= */
-/* =================================================
-   PAYMENT TO SUPPLIER FOR PLANT & MACHINERY
-   EXISTING SUPPLIER LIABILITY
-================================================= */
-
-else if(
-    (
-        text.includes("paid a cheque") ||
-        text.includes("paid cheque") ||
-        text.includes("cheque paid") ||
-        text.includes("paid by cheque")
-    ) &&
-    (
-        text.includes("supplier") ||
-        text.includes("creditor")
-    ) &&
-    (
-        text.includes("plant") ||
-        text.includes("machinery") ||
-        text.includes("machine")
-    )
-){
-
-    rows = [
-        {
-            account: "Supplier / Creditor",
-            debit: amount,
-            credit: 0
-        },
-        {
-            account: "Bank",
-            debit: 0,
-            credit: amount
-        }
-    ];
-
-    narration = language === "en"
-        ? `Being cheque of ₹${money(amount)} paid to the supplier for plant and machinery.`
-        : `प्लांट एवं मशीनरी के सप्लायर को ₹${money(amount)} का चेक भुगतान किया गया।`;
-
-    trading = language === "en"
-        ? `<span class="no">✗ No effect on Trading Account</span>`
-        : `<span class="no">✗ Trading Account पर कोई प्रभाव नहीं</span>`;
-
-    profitLoss = language === "en"
-        ? `<span class="no">✗ No direct effect on Profit & Loss Account</span>`
-        : `<span class="no">✗ Profit & Loss Account पर कोई सीधा प्रभाव नहीं</span>`;
-
-    balanceSheet = language === "en"
-        ? `✓ Bank decreases ₹${money(amount)}<br>
-           ✓ Supplier/Creditor liability decreases ₹${money(amount)}`
-        : `✓ Bank ₹${money(amount)} कम होगा<br>
-           ✓ Supplier/Creditor की देयता ₹${money(amount)} कम होगी`;
-
-    assets = language === "en"
-        ? `Bank ↓ ₹${money(amount)}`
-        : `Bank ↓ ₹${money(amount)}`;
-
-    liabilities = language === "en"
-        ? `Supplier/Creditor ↓ ₹${money(amount)}`
-        : `Supplier/Creditor ↓ ₹${money(amount)}`;
-
-    capital = language === "en"
-        ? `No direct change`
-        : `कोई सीधा परिवर्तन नहीं`;
-
-    explanation = language === "en"
-        ? `The supplier is already a creditor of the business. 
-           Therefore, payment settles the existing liability. 
-           Supplier/Creditor A/c is debited and Bank A/c is credited. 
-           Plant & Machinery is not debited again because the asset purchase 
-           has already been recorded when the liability was created.`
-        : `Supplier पहले से व्यवसाय का creditor है। इसलिए यह payment 
-           पुरानी देयता को समाप्त करता है। Supplier/Creditor A/c को Debit 
-           और Bank A/c को Credit किया जाएगा। Plant & Machinery को दोबारा 
-           Debit नहीं किया जाएगा क्योंकि asset की purchase पहले ही record हो चुकी है।`;
-}
-    else if(
-
-        text.includes("plant & machinery") ||
-        text.includes("machine")
-
-    ){
-
-        rows=[
-
-            {
-                account:"plant & Machinery",
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:text.includes("bank")?"Bank":"Cash",
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? "Being plant & machinery purchased."
-            : "मशीनरी खरीदी गई।";
-
-
-        trading=`<span class="no">✗ ${language==="en"?"No effect":"कोई प्रभाव नहीं"}</span>`;
-
-        profitLoss=`<span class="no">✗ ${language==="en"?"No direct effect":"कोई सीधा प्रभाव नहीं"}</span>`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ plant & Machinery → Fixed Asset`
-            : `✓ मशीनरी → स्थायी संपत्ति`;
-
-
-        assets=language==="en"
-            ? `plant & Machinery ↑ ₹${money(amount)}<br>
-               Cash/Bank ↓ ₹${money(amount)}`
-            : `मशीनरी ↑ ₹${money(amount)}<br>
-               नकद/बैंक ↓ ₹${money(amount)}`;
-
-
-        liabilities=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        capital=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        explanation=language==="en"
-            ? `plant & Machinery is a fixed asset.
-               It is capitalised and shown in the Balance Sheet.`
-            : `मशीनरी एक स्थायी संपत्ति है।
-               इसे capitalise करके Balance Sheet में दिखाया जाता है।`;
-
-    }
-
-
-    /* =================================================
-       BUILDING
-    ================================================= */
-
-    else if(text.includes("building")){
-
-        rows=[
-
-            {
-                account:"Building",
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:text.includes("bank")?"Bank":"Cash",
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? "Being building purchased."
-            : "भवन खरीदा गया।";
-
-
-        trading=`<span class="no">✗ ${language==="en"?"No effect":"कोई प्रभाव नहीं"}</span>`;
-
-
-        profitLoss=`<span class="no">✗ ${language==="en"?"No direct effect":"कोई सीधा प्रभाव नहीं"}</span>`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Building → Fixed Asset`
-            : `✓ भवन → स्थायी संपत्ति`;
-
-
-        assets=language==="en"
-            ? `Building ↑ ₹${money(amount)}`
-            : `भवन ↑ ₹${money(amount)}`;
-
-
-        liabilities=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        capital=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        explanation=language==="en"
-            ? `A building used by the business is a fixed asset
-               and is shown in the Balance Sheet.`
-            : `व्यवसाय में उपयोग होने वाला भवन स्थायी संपत्ति है
-               और Balance Sheet में दिखाया जाता है।`;
-
-    }
-
-
-    /* =================================================
-       CAPITAL
-    ================================================= */
-
-    else if(
-
-        text.includes("started business") ||
-        text.includes("started the business") ||
-        text.includes("capital introduced") ||
-        text.includes("introduced capital") ||
-        text.includes("business started with")
-
-    ){
-
-        let account=text.includes("bank")?"Bank":"Cash";
-
-
-        rows=[
-
-            {
-                account:account,
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:"Capital",
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? "Being capital introduced into the business."
-            : "व्यवसाय में पूंजी लगाई गई।";
-
-
-        trading=`<span class="no">✗ ${language==="en"?"No effect":"कोई प्रभाव नहीं"}</span>`;
-
-        profitLoss=`<span class="no">✗ ${language==="en"?"No effect":"कोई प्रभाव नहीं"}</span>`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Capital → Owner's Equity<br>
-               ✓ Cash/Bank → Asset`
-            : `✓ पूंजी → स्वामी की इक्विटी<br>
-               ✓ नकद/बैंक → संपत्ति`;
-
-
-        assets=language==="en"
-            ? `${account} ↑ ₹${money(amount)}`
-            : `${account} ↑ ₹${money(amount)}`;
-
-
-        liabilities=language==="en"
-            ? `No liability created`
-            : `कोई दायित्व नहीं बना`;
-
-
-        capital=language==="en"
-            ? `Capital ↑ ₹${money(amount)}`
-            : `पूंजी ↑ ₹${money(amount)}`;
-
-
-        explanation=language==="en"
-            ? `Capital is the owner's investment in the business.
-               Cash or Bank is debited because the business receives the resource,
-               and Capital is credited because owner's equity increases.`
-            : `पूंजी व्यवसाय में स्वामी का निवेश है।
-               व्यवसाय को नकद या बैंक राशि प्राप्त होने के कारण उसे Debit किया जाता है
-               और स्वामी की इक्विटी बढ़ने के कारण Capital को Credit किया जाता है।`;
-
-    }
-
-
-    /* =================================================
-       DEPRECIATION
-    ================================================= */
-
-    else if(text.includes("depreciation")){
-
-        let asset="Furniture";
-
-
-        if(text.includes("plant & machinery") ||
-           text.includes("machine"))
-            asset="plant & Machinery";
-
-
-        if(text.includes("building"))
-            asset="Building";
-
-
-        rows=[
-
-            {
-                account:"Depreciation",
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:"Accumulated Depreciation - "+asset,
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? `Being depreciation charged on ${asset.toLowerCase()}.`
-            : `${asset} पर मूल्यह्रास लगाया गया।`;
-
-
-        trading=`<span class="no">✗ ${language==="en"?"Normally no":"सामान्यतः नहीं"}</span>`;
-
-
-        profitLoss=language==="en"
-            ? `<span class="yes">✓ Depreciation → Debit</span><br>
-               Indirect expense`
-            : `<span class="yes">✓ Depreciation → Debit</span><br>
-               अप्रत्यक्ष व्यय`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ ${asset} carrying value decreases`
-            : `✓ ${asset} की book value कम होगी`;
-
-
-        assets=language==="en"
-            ? `${asset} ↓ ₹${money(amount)}`
-            : `${asset} ↓ ₹${money(amount)}`;
-
-
-        liabilities=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        capital=language==="en"
-            ? `Decreases through depreciation expense`
-            : `मूल्यह्रास व्यय के कारण कम होगा`;
-
-
-        explanation=language==="en"
-            ? `Depreciation is the systematic allocation of the cost
-               of a fixed asset over its useful life.
-               It is treated as an expense and reduces the carrying
-               amount of the asset.`
-            : `मूल्यह्रास स्थायी संपत्ति की लागत को उसके उपयोगी जीवन में
-               व्यवस्थित रूप से बांटने की प्रक्रिया है।
-               इसे व्यय माना जाता है और संपत्ति की carrying value कम होती है।`;
-
-    }
-
-
-    /* =================================================
-       BAD DEBTS
-    ================================================= */
-
-    else if(text.includes("bad debt")){
-
-        let party=findParty(original)||"Debtor";
-
-
-        rows=[
-
-            {
-                account:"Bad Debts",
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:party,
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? `Being amount due from ${party} written off as bad debt.`
-            : `${party} से प्राप्त होने वाली राशि को bad debt माना गया।`;
-
-
-        trading=`<span class="no">✗ ${language==="en"?"No direct effect":"कोई सीधा प्रभाव नहीं"}</span>`;
-
-
-        profitLoss=language==="en"
-            ? `<span class="yes">✓ Bad Debts → Debit</span><br>
-               Expense`
-            : `<span class="yes">✓ Bad Debts → Debit</span><br>
-               व्यय`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Debtor decreases ₹${money(amount)}`
-            : `✓ देनदार ₹${money(amount)} कम होगा`;
-
-
-        assets=language==="en"
-            ? `Debtor ↓ ₹${money(amount)}`
-            : `देनदार ↓ ₹${money(amount)}`;
-
-
-        liabilities=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        capital=language==="en"
-            ? `Decreases through expense`
-            : `व्यय के कारण कम होगा`;
-
-
-        explanation=language==="en"
-            ? `The amount cannot be recovered from the debtor.
-               It is therefore written off as Bad Debt.
-               Bad Debt is an expense and is charged to P&L.`
-            : `देनदार से राशि वसूल नहीं हो सकती।
-               इसलिए उसे Bad Debt के रूप में write off किया जाता है।
-               Bad Debt एक व्यय है और P&L में Debit किया जाता है।`;
-
-    }
-
-
-    /* =================================================
-       LOAN RECEIVED
-    ================================================= */
-
-    else if(
-
-        text.includes("loan received") ||
-        text.includes("loan taken") ||
-        text.includes("loan obtained")
-
-    ){
-
-        let account=text.includes("bank")?"Bank":"Cash";
-
-
-        rows=[
-
-            {
-                account:account,
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:"Loan",
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? "Being loan received."
-            : "ऋण प्राप्त हुआ।";
-
-
-        trading=`<span class="no">✗ ${language==="en"?"No effect":"कोई प्रभाव नहीं"}</span>`;
-
-
-        profitLoss=`<span class="no">✗ ${language==="en"?"No direct effect":"कोई सीधा प्रभाव नहीं"}</span>`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Cash/Bank → Asset<br>
-               ✓ Loan → Liability`
-            : `✓ नकद/बैंक → संपत्ति<br>
-               ✓ ऋण → दायित्व`;
-
-
-        assets=language==="en"
-            ? `${account} ↑ ₹${money(amount)}`
-            : `${account} ↑ ₹${money(amount)}`;
-
-
-        liabilities=language==="en"
-            ? `Loan ↑ ₹${money(amount)}`
-            : `ऋण ↑ ₹${money(amount)}`;
-
-
-        capital=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        explanation=language==="en"
-            ? `A loan increases the business's cash or bank balance
-               and creates a liability to repay the lender.`
-            : `ऋण प्राप्त होने से व्यवसाय की नकद या बैंक राशि बढ़ती है
-               और ऋण चुकाने का दायित्व पैदा होता है।`;
-
-    }
-
-
-    /* =================================================
-       LOAN REPAID
-    ================================================= */
-
-    else if(
-
-        text.includes("loan repaid") ||
-        text.includes("loan paid") ||
-        text.includes("repaid loan")
-
-    ){
-
-        rows=[
-
-            {
-                account:"Loan",
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:text.includes("bank")?"Bank":"Cash",
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? "Being loan repaid."
-            : "ऋण का भुगतान किया गया।";
-
-
-        trading=`<span class="no">✗ ${language==="en"?"No effect":"कोई प्रभाव नहीं"}</span>`;
-
-        profitLoss=`<span class="no">✗ ${language==="en"?"No direct effect":"कोई सीधा प्रभाव नहीं"}</span>`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Loan liability decreases<br>
-               ✓ Cash/Bank decreases`
-            : `✓ ऋण दायित्व कम होगा<br>
-               ✓ नकद/बैंक कम होगा`;
-
-
-        assets=language==="en"
-            ? `Cash/Bank ↓ ₹${money(amount)}`
-            : `नकद/बैंक ↓ ₹${money(amount)}`;
-
-
-        liabilities=language==="en"
-            ? `Loan ↓ ₹${money(amount)}`
-            : `ऋण ↓ ₹${money(amount)}`;
-
-
-        capital=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        explanation=language==="en"
-            ? `Repayment reduces the loan liability and reduces cash or bank.
-               Repayment of principal itself is not an expense.`
-            : `ऋण चुकाने से ऋण दायित्व और नकद/बैंक दोनों कम होते हैं।
-               मूल ऋण की repayment स्वयं कोई व्यय नहीं है।`;
-
-    }
-
-
-    /* =================================================
-       INTEREST PAID
-    ================================================= */
-
-    else if(text.includes("interest paid")){
-
-        rows=[
-
-            {
-                account:"Interest",
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:text.includes("bank")?"Bank":"Cash",
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? "Being interest paid."
-            : "ब्याज का भुगतान किया गया।";
-
-
-        trading=`<span class="no">✗ ${language==="en"?"No":"नहीं"}</span>`;
-
-
-        profitLoss=language==="en"
-            ? `<span class="yes">✓ Interest → Debit</span>`
-            : `<span class="yes">✓ Interest → Debit</span>`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Cash/Bank decreases`
-            : `✓ नकद/बैंक कम होगा`;
-
-
-        assets=language==="en"
-            ? `Cash/Bank ↓ ₹${money(amount)}`
-            : `नकद/बैंक ↓ ₹${money(amount)}`;
-
-
-        liabilities=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        capital=language==="en"
-            ? `Decreases through expense`
-            : `व्यय के कारण कम होगा`;
-
-
-        explanation=language==="en"
-            ? `Interest paid is a financial expense and is charged
-               to Profit & Loss Account.`
-            : `भुगतान किया गया ब्याज वित्तीय व्यय है और इसे
-               Profit & Loss Account में Debit किया जाता है।`;
-
-    }
-
-
-    /* =================================================
-       INTEREST RECEIVED
-    ================================================= */
-
-    else if(text.includes("interest received")){
-
-        rows=[
-
-            {
-                account:text.includes("bank")?"Bank":"Cash",
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:"Interest Received",
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? "Being interest received."
-            : "ब्याज प्राप्त हुआ।";
-
-
-        trading=`<span class="no">✗ ${language==="en"?"No":"नहीं"}</span>`;
-
-
-        profitLoss=language==="en"
-            ? `<span class="yes">✓ Interest Received → Credit</span>`
-            : `<span class="yes">✓ Interest Received → Credit</span>`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Cash/Bank increases`
-            : `✓ नकद/बैंक बढ़ेगा`;
-
-
-        assets=language==="en"
-            ? `Cash/Bank ↑ ₹${money(amount)}`
-            : `नकद/बैंक ↑ ₹${money(amount)}`;
-
-
-        liabilities=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        capital=language==="en"
-            ? `Increases through income`
-            : `आय के कारण बढ़ेगा`;
-
-
-        explanation=language==="en"
-            ? `Interest received is income and is credited to Profit & Loss Account.`
-            : `प्राप्त ब्याज आय है और इसे Profit & Loss Account में Credit किया जाता है।`;
-
-    }
-
-
-    /* =================================================
-       OUTSTANDING EXPENSE
-    ================================================= */
-
-    else if(
-
-        text.includes("outstanding") &&
-        (
-            text.includes("expense") ||
-            text.includes("salary") ||
-            text.includes("rent") ||
-            text.includes("wages")
-        )
-
-    ){
-
-        let expense="Expense";
-
-
-        if(text.includes("salary"))
-            expense="Salary";
-
-        else if(text.includes("rent"))
-            expense="Rent";
-
-        else if(text.includes("wages"))
-            expense="Wages";
-
-
-        rows=[
-
-            {
-                account:expense,
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:"Outstanding "+expense,
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? `Being ${expense.toLowerCase()} outstanding.`
-            : `${expense} बकाया है।`;
-
-
-        trading=language==="en"
-            ? `<span class="yes">✓ Depends on nature of expense</span>`
-            : `<span class="yes">✓ व्यय की प्रकृति पर निर्भर</span>`;
-
-
-        profitLoss=language==="en"
-            ? `<span class="yes">✓ Expense charged to P&L where applicable</span>`
-            : `<span class="yes">✓ लागू होने पर व्यय P&L में जाएगा</span>`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Outstanding ${expense} → Current Liability`
-            : `✓ बकाया ${expense} → चालू दायित्व`;
-
-
-        assets=language==="en"
-            ? `No direct asset increase`
-            : `कोई सीधी संपत्ति वृद्धि नहीं`;
-
-
-        liabilities=language==="en"
-            ? `Outstanding ${expense} ↑ ₹${money(amount)}`
-            : `बकाया ${expense} ↑ ₹${money(amount)}`;
-
-
-        capital=language==="en"
-            ? `Reduced through expense`
-            : `व्यय के कारण कम होगा`;
-
-
-        explanation=language==="en"
-            ? `An outstanding expense has been incurred but has not yet
-               been paid. The expense is recognised and the unpaid amount
-               becomes a current liability.`
-            : `बकाया व्यय वह व्यय है जो हो चुका है लेकिन अभी भुगतान नहीं हुआ।
-               व्यय को मान्यता दी जाती है और unpaid amount चालू दायित्व बनता है।`;
-
-    }
-
-
-    /* =================================================
-       PREPAID EXPENSE
-    ================================================= */
-
-    else if(text.includes("prepaid")){
-
-        rows=[
-
-            {
-                account:"Prepaid Expense",
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:"Expense",
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? "Being prepaid portion of expense adjusted."
-            : "व्यय के prepaid भाग का समायोजन किया गया।";
-
-
-        trading=`<span class="yes">✓ Depends on expense</span>`;
-
-
-        profitLoss=language==="en"
-            ? `<span class="yes">✓ Current-period expense only</span>`
-            : `<span class="yes">✓ केवल वर्तमान अवधि का व्यय</span>`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Prepaid Expense → Current Asset`
-            : `✓ Prepaid Expense → चालू संपत्ति`;
-
-
-        assets=language==="en"
-            ? `Prepaid Expense ↑ ₹${money(amount)}`
-            : `Prepaid Expense ↑ ₹${money(amount)}`;
-
-
-        liabilities=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        capital=language==="en"
-            ? `Depends on final expense`
-            : `अंतिम व्यय पर निर्भर`;
-
-
-        explanation=language==="en"
-            ? `The prepaid portion relates to a future period.
-               It is therefore treated as an asset until the related
-               period is consumed.`
-            : `Prepaid राशि भविष्य की अवधि से संबंधित है।
-               इसलिए जब तक वह अवधि उपयोग नहीं होती, इसे संपत्ति माना जाता है।`;
-
-    }
-
-
-    /* =================================================
-       ACCRUED INCOME
-    ================================================= */
-
-    else if(
-
-        text.includes("accrued income") ||
-        text.includes("income accrued")
-
-    ){
-
-        rows=[
-
-            {
-                account:"Accrued Income",
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:"Income",
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? "Being income accrued but not yet received."
-            : "आय अर्जित हुई लेकिन अभी प्राप्त नहीं हुई।";
-
-
-        trading=`<span class="no">✗ ${language==="en"?"Normally no":"सामान्यतः नहीं"}</span>`;
-
-
-        profitLoss=language==="en"
-            ? `<span class="yes">✓ Income → Credit</span>`
-            : `<span class="yes">✓ आय → Credit</span>`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Accrued Income → Current Asset`
-            : `✓ Accrued Income → चालू संपत्ति`;
-
-
-        assets=language==="en"
-            ? `Accrued Income ↑ ₹${money(amount)}`
-            : `Accrued Income ↑ ₹${money(amount)}`;
-
-
-        liabilities=language==="en"
-            ? `No direct change`
-            : `कोई सीधा परिवर्तन नहीं`;
-
-
-        capital=language==="en"
-            ? `Increases through income`
-            : `आय के कारण बढ़ेगा`;
-
-
-        explanation=language==="en"
-            ? `Income has been earned but has not yet been received.
-               It is recognised as income and the amount receivable
-               is shown as a current asset.`
-            : `आय अर्जित हो चुकी है लेकिन अभी प्राप्त नहीं हुई।
-               इसे आय के रूप में मान्यता दी जाती है और प्राप्त होने वाली राशि
-               को चालू संपत्ति के रूप में दिखाया जाता है।`;
-
-    }
-
-
-    /* =================================================
-       UNEARNED INCOME
-    ================================================= */
-
-    else if(
-
-        text.includes("unearned income") ||
-        text.includes("income received in advance") ||
-        text.includes("income received advance")
-
-    ){
-
-        rows=[
-
-            {
-                account:"Cash/Bank",
-                debit:amount,
-                credit:0
-            },
-
-            {
-                account:"Unearned Income",
-                debit:0,
-                credit:amount
-            }
-
-        ];
-
-
-        narration=language==="en"
-            ? "Being income received in advance."
-            : "आय अग्रिम रूप से प्राप्त हुई।";
-
-
-        trading=`<span class="no">✗ ${language==="en"?"No direct effect":"कोई सीधा प्रभाव नहीं"}</span>`;
-
-
-        profitLoss=`<span class="no">✗ ${language==="en"?"Not current income":"वर्तमान आय नहीं"}</span>`;
-
-
-        balanceSheet=language==="en"
-            ? `✓ Unearned Income → Current Liability`
-            : `✓ Unearned Income → चालू दायित्व`;
-
-
-        assets=language==="en"
-            ? `Cash/Bank ↑ ₹${money(amount)}`
-            : `नकद/बैंक ↑ ₹${money(amount)}`;
-
-
-        liabilities=language==="en"
-            ? `Unearned Income ↑ ₹${money(amount)}`
-            : `Unearned Income ↑ ₹${money(amount)}`;
-
-
-        capital=language==="en"
-            ? `No current income effect`
-            : `वर्तमान आय पर प्रभाव नहीं`;
-
-
-        explanation=language==="en"
-            ? `Money has been received before the related income is earned.
-               Therefore it is treated as a liability until the service
-               or obligation is fulfilled.`
-            : `राशि आय अर्जित होने से पहले प्राप्त हुई है।
-               इसलिए संबंधित सेवा/दायित्व पूरा होने तक इसे दायित्व माना जाता है।`;
-
-    }
-
-
-    /* =================================================
+    /* =========================================================
        DEFAULT
-    ================================================= */
-
+    ========================================================= */
     else{
-
         showError(
-
             language==="en"
-
-            ?
-
-            `Transaction not recognised.
-
-Try a transaction such as:
-"Purchase goods Rs.40000 for cash and Rs.45000 on account."
-
-For a more complex transaction, write the complete sentence with amounts.`
-
-            :
-
-            `लेन-देन समझ में नहीं आया।
-
-उदाहरण:
-"Purchase goods Rs.40000 for cash and Rs.45000 on account."
-
-जटिल transaction के लिए पूरा sentence और amounts लिखें।`
-
+            ?`Transaction not recognised. Please write the complete transaction with amount(s).`
+            :`लेन-देन समझ में नहीं आया। कृपया पूरा transaction और amount लिखें।`
         );
-
         return;
-
     }
 
-
-    /* =================================================
-       DISPLAY
-    ================================================= */
+    // Accounting integrity check
+    const debitTotal=d.rows.reduce((s,r)=>s+(r.debit||0),0);
+    const creditTotal=d.rows.reduce((s,r)=>s+(r.credit||0),0);
+    if(Math.abs(debitTotal-creditTotal)>0.01){
+        showError(language==="en"
+            ?"Internal accounting error: Debit and Credit do not balance."
+            :"आंतरिक accounting error: Debit और Credit बराबर नहीं हैं।");
+        return;
+    }
 
     hideError();
-
-
-    document.getElementById("transactionText")
-        .innerText=original;
-
-
-    showJournal(rows);
-
-
-    document.getElementById("narration")
-        .innerText=narration;
-
-
-    document.getElementById("trading")
-        .innerHTML=trading;
-
-
-    document.getElementById("profitLoss")
-        .innerHTML=profitLoss;
-
-
-    document.getElementById("balanceSheet")
-        .innerHTML=balanceSheet;
-
-
-    document.getElementById("assetsEffect")
-        .innerHTML=assets;
-
-
-    document.getElementById("liabilityEffect")
-        .innerHTML=liabilities;
-
-
-    document.getElementById("capitalEffect")
-        .innerHTML=capital;
-
-
-    document.getElementById("explanation")
-        .innerHTML=explanation;
-
-
-    document.getElementById("result")
-        .style.display="block";
-
+    document.getElementById("transactionText").innerText=original;
+    showJournal(d.rows);
+    document.getElementById("narration").innerText=d.narration;
+    document.getElementById("trading").innerHTML=d.trading;
+    document.getElementById("profitLoss").innerHTML=d.profitLoss;
+    document.getElementById("balanceSheet").innerHTML=d.balanceSheet;
+    document.getElementById("assetsEffect").innerHTML=d.assets;
+    document.getElementById("liabilityEffect").innerHTML=d.liabilities;
+    document.getElementById("capitalEffect").innerHTML=d.capital;
+    document.getElementById("explanation").innerHTML=d.explanation;
+    document.getElementById("result").style.display="block";
 }
 
-
-/* =====================================================
-   EXAMPLE
-===================================================== */
-
-function useExample(text){
-
-    document.getElementById("transaction").value=text;
-
-    generateEntry();
-
+function showJournal(rows){
+    let html="", debitTotal=0, creditTotal=0;
+    rows.forEach(r=>{
+        debitTotal+=r.debit||0;
+        creditTotal+=r.credit||0;
+        html+=`<tr>
+            <td>${r.debit ? "<strong>"+r.account+" A/c Dr.</strong>" : "&nbsp;&nbsp;&nbsp;To "+r.account+" A/c"}</td>
+            <td class="right">${r.debit?money(r.debit):""}</td>
+            <td class="right">${r.credit?money(r.credit):""}</td>
+        </tr>`;
+    });
+    html+=`<tr class="total">
+        <td>${lang[language].total}</td>
+        <td class="right">${money(debitTotal)}</td>
+        <td class="right">${money(creditTotal)}</td>
+    </tr>`;
+    document.getElementById("journalBody").innerHTML=html;
 }
 
-
-/* =====================================================
-   CLEAR
-===================================================== */
-
-function clearAll(){
-
-    document.getElementById("transaction").value="";
-
+function showError(msg){
+    document.getElementById("error").innerText=msg;
+    document.getElementById("error").style.display="block";
     document.getElementById("result").style.display="none";
-
-    hideError();
-
 }
-
-
-/* =====================================================
-   ENTER KEY
-===================================================== */
-
-document.getElementById("transaction")
-.addEventListener("keydown",function(e){
-
-    if(e.ctrlKey && e.key==="Enter"){
-
-        generateEntry();
-
-    }
-
+function hideError(){ document.getElementById("error").style.display="none"; }
+function useExample(t){ document.getElementById("transaction").value=t; generateEntry(); }
+function clearAll(){
+    document.getElementById("transaction").value="";
+    document.getElementById("result").style.display="none";
+    hideError();
+}
+document.getElementById("transaction").addEventListener("keydown",function(e){
+    if(e.ctrlKey && e.key==="Enter") generateEntry();
 });
-
-
 </script>
-
 </body>
 </html>
-```
